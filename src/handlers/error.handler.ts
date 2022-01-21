@@ -12,10 +12,9 @@ export const getErrorString = (errorMessage: string): string => {
 		case "E001":
 			return(
 				"\nPlease provide the minimum arguments:\n\n" +
-				"\t1st: Project Directory\n" +
-				"\t2nd: Project Name\n" +
-				"\t3rd: Template\n\n" +
-				"ex: npm start directory/for/project my-project skeleton\n"
+				"\t1st: Project Name\n" +
+				"\t2nd: Template\n\n" +
+				"ex: npm start my-project skeleton\n"
 			);
 		case "E002":
 			return(

@@ -5,8 +5,7 @@ const main = () => {
 	let args = argumentsHandler.getArguments(); 
 	console.log(args);
 
-	// add a base ../ since index.ts is inside the src/ directory
-	const projectDir = path.join(__dirname, "../"+args.projectDir, args.projectName);
+	const projectDir = path.join(__dirname, "../../", args.projectName);
 	console.log(projectDir);
 }
 
