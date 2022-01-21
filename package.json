@@ -1,0 +1,26 @@
+{
+  "name": "create-ts-express-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walrussuit101/create-ts-express-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Walrussuit101/create-ts-express-api/issues"
+  },
+  "homepage": "https://github.com/Walrussuit101/create-ts-express-api#readme",
+  "dependencies": {
+    "@types/node": "^17.0.10",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  }
+}
