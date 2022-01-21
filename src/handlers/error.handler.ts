@@ -14,13 +14,13 @@ export const getErrorString = (errorMessage: string): string => {
 				"\nPlease provide the minimum arguments:\n\n" +
 				"\t1st: Project Directory\n" +
 				"\t2nd: Project Name\n" +
-				"\t3rd: Template\n\n"+
+				"\t3rd: Template\n\n" +
 				"ex: npm start directory/for/project my-project skeleton\n"
 			);
 		case "E002":
 			return(
-				"\nPlease provide a project name containing only the follow characters:\n\n"+
-				"\t a-z, A-Z, 0-9, -, and _\n\n"+
+				"\nPlease provide a project name containing only the follow characters:\n\n" +
+				"\t a-z, A-Z, 0-9, -, and _\n\n" +
 				"ex: npm start directory/for/project my-project skeleton\n"
 			);
 		default:
