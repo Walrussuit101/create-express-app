@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "nodemon -e ts,json --exec \"npm start\"",
+	"help": "ts-node src/help.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
