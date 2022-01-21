@@ -22,7 +22,7 @@ export const getArguments = (): arguments => {
 		throw new Error("E002 - Invalid project name provided: \""+projectName+"\"");
 	}
 
-	// returned cleaned parsed args
+	// return cleaned parsed args
 	return {
 		projectName: args[0].toLowerCase(),
 		template: args[1].toLowerCase()
