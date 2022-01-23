@@ -22,6 +22,11 @@ export const getErrorString = (errorMessage: string): string => {
 				"\t a-z, A-Z, 0-9, -, and _\n\n" +
 				"ex: npm start directory/for/project my-project skeleton\n"
 			);
+		case "E003":
+			return(
+				"\nPlease provide a project name that doesn't conflict with an\n" +
+				"existing directory, or remove said directory.\n"
+			);
 		default:
 			return '';
 	}
