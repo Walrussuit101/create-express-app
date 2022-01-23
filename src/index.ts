@@ -1,11 +1,10 @@
-import path from 'path';
-import { errorHandler, argumentsHandler } from './handlers';
+import { errorHandler, argumentsHandler, directoryHandler } from './handlers';
 
 const main = () => {
 	let args = argumentsHandler.getArguments(); 
 	console.log(args);
 
-	const projectDir = path.join(__dirname, "..", "..", args.projectName);
+	const projectDir = directoryHandler.getProjectDirectory(args.projectName);
 	console.log(projectDir);
 }
 
