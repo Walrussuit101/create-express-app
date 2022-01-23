@@ -1,4 +1,8 @@
-import { errorHandler, argumentsHandler, directoryHandler } from './handlers';
+import {
+	errorHandler, 
+	argumentsHandler, 
+	directoryHandler 
+} from './handlers';
 
 const main = () => {
 	let args = argumentsHandler.getArguments(); 
