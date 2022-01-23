@@ -5,7 +5,7 @@ const main = () => {
 	let args = argumentsHandler.getArguments(); 
 	console.log(args);
 
-	const projectDir = path.join(__dirname, "../../", args.projectName);
+	const projectDir = path.join(__dirname, "..", "..", args.projectName);
 	console.log(projectDir);
 }
 
