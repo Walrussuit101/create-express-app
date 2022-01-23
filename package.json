@@ -1,7 +1,7 @@
 {
   "name": "create-ts-express-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A tool to quickstart various express-y projects using templates",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
