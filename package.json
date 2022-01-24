@@ -1,5 +1,5 @@
 {
-  "name": "create-ts-express-api",
+  "name": "create-express-app",
   "version": "1.0.0",
   "description": "A tool to quickstart various express-y projects using templates",
   "main": "src/index.ts",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Walrussuit101/create-ts-express-api.git"
+    "url": "git+https://github.com/Walrussuit101/create-express-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Walrussuit101/create-ts-express-api/issues"
+    "url": "https://github.com/Walrussuit101/create-express-app/issues"
   },
-  "homepage": "https://github.com/Walrussuit101/create-ts-express-api#readme",
+  "homepage": "https://github.com/Walrussuit101/create-express-app#readme",
   "dependencies": {
     "@types/node": "^17.0.10",
     "nodemon": "^2.0.15",
