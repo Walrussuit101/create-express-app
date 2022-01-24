@@ -6,17 +6,17 @@ const port = process.env.PORT || 8080;
 
 // return the compiled client js file
 server.get("/bundle.js", (_, res: Response) => {
-	res.sendFile(path.join(__dirname, "client/dist/bundle.js"));
+	res.sendFile(path.join(__dirname, "client", "bundle.js"));
 });
 
 // return the stylesheet
 server.get("/index.css", (_, res: Response) => {
-	res.sendFile(path.join(__dirname, "./client/index.css"));
+	res.sendFile(path.join(__dirname, "client", "index.css"));
 });
 
 // return the html file
 server.get("/", (_, res: Response) => {
-	res.sendFile(path.join(__dirname, "./client/index.html"));
+	res.sendFile(path.join(__dirname, "client", "index.html"));
 });
 
 server.listen(port, () => {
