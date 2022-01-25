@@ -15,10 +15,6 @@ const main = () => {
 try {
 	main();
 } catch(e: unknown) {
-	if (e instanceof CustomError){
-		e.log();
-	} else {
-		console.error(e);
-	}
+	(e instanceof CustomError) ? e.log() : console.error(e);
 	process.exit(1);
 }
