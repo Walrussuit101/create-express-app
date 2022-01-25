@@ -1,8 +1,8 @@
 import {
-	errorHandler, 
 	argumentsHandler, 
 	directoryHandler 
 } from './handlers';
+import CustomError from './models';
 
 const main = () => {
 	let args = argumentsHandler.getArguments(); 
@@ -15,9 +15,6 @@ const main = () => {
 try {
 	main();
 } catch(e: unknown) {
-	if (e instanceof Error){
-		console.error("\x1b[31m", e.message); // log message in red
-		console.error("\x1b[0m", errorHandler.getErrorString(e.message)); // reset color for error string
-	}
+	(e instanceof CustomError) ? e.log() : console.error(e);
 	process.exit(1);
 }
