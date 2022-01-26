@@ -8,8 +8,9 @@ const main = () => {
 	let args = argumentsHandler.getArguments(); 
 	console.log(args);
 
+	// get project directory and create it
 	const projectDir = directoryHandler.getProjectDirectory(args.projectName);
-	console.log(projectDir);
+	directoryHandler.createProjectDirectory(projectDir);
 }
 
 try {
