@@ -30,7 +30,10 @@ const ErrorDetailDictionary = {
             "ex: npm start my-project skeleton\n",
 
     "E003": "\nPlease provide a project name that doesn't conflict with an\n" +
-            "existing directory, or remove said directory.\n"
+            "existing directory, or remove said directory.\n",
+    
+    "E004": "\nPlease provide a valid template." + 
+            "\nUse 'npm run help templates' to see valid options.\n"
 }
 
 export default CustomError;
