@@ -1,5 +1,5 @@
 import path from 'path';
-import { existsSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import CustomError from '../models';
 
 /**
@@ -18,4 +18,14 @@ export const getProjectDirectory = (projectName: string): string => {
 	}
 
 	return projectDir;
+}
+
+/**
+ * Create the project directory
+ * 
+ * @param projectDir Directory of project
+ * @returns void
+ */
+export const createProjectDirectory = (projectDir: string): void => {
+	console.log(mkdirSync(projectDir));
 }
