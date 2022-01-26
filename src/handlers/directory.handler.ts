@@ -27,5 +27,5 @@ export const getProjectDirectory = (projectName: string): string => {
  * @returns void
  */
 export const createProjectDirectory = (projectDir: string): void => {
-	console.log(mkdirSync(projectDir));
+	mkdirSync(projectDir)
 }
