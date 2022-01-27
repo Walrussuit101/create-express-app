@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "dev": "nodemon -e ts,json --exec \"ts-node src/index.ts\"",
+    "dev": "nodemon -e ts,js,json --exec \"ts-node src/index.ts\"",
     "help": "ts-node src/help.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
