@@ -7,7 +7,6 @@ import CustomError from '../models';
  * Which will be a neighbor of this code base.
  *
  * @param projectName Name of project
-
  * @returns string
  */
 export const getProjectDirectory = (projectName: string): string => {
