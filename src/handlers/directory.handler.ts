@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, copySync, renameSync, removeSync } from 'fs-extr
 import CustomError from '../models';
 
 /**
- * Validate and get the project directory path.
+ * Get the project directory path.
  * Which will be a neighbor of this code base.
  *
  * @param projectName Name of project
@@ -14,7 +14,7 @@ export const getProjectDirectory = (projectName: string): string => {
 }
 
 /**
- * Create the project directory
+ * Validate and create the project directory.
  * 
  * @param projectDir Directory of project
  * @throws CustomError
