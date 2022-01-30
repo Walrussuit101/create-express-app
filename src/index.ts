@@ -21,6 +21,7 @@ const main = () => {
 	// create project directory and copy template
 	directoryHandler.createProjectDirectory(projectDir);
 	directoryHandler.copyTemplate(projectDir, args.template);
+	directoryHandler.initGitRepo(projectDir);
 }
 
 try {
