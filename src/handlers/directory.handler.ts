@@ -1,6 +1,8 @@
 import path from 'path';
 import { existsSync, mkdirSync, copySync, renameSync, removeSync } from 'fs-extra';
 import CustomError from '../models';
+import { exec } from 'child_process';
+import { Console } from 'console';
 
 /**
  * Get the project directory path.
@@ -53,4 +55,71 @@ export const copyTemplate = (projectDir: string, template: string): void => {
  */
 export const deleteProjectDirectory = (projectDir: string): void => {
 	removeSync(projectDir);
+}
+
+/**
+ * Initialize a git repository in the project directory
+ * 
+ * @param projectDir Directory of Project
+ * @returns void
+ */
+export const initGitRepo = (projectDir: string): void => {
+	try {
+		//Initialize git
+		exec("git -C " +  projectDir + " init;" 
+		+ "git -C " + projectDir + "/ add .;"
+		+ "git -C "+ projectDir+"/ commit -m \"Initial Commit\";", (error, stdout, stderr) => {
+			if (error) {
+				console.log(`error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(stdout);
+		})
+		// exec(`git -C ${projectDir} init `, (error, stdout, stderr) => {
+		// 	if (error) {
+		// 		console.log(`error: ${error.message}`);
+		// 		return;
+		// 	}
+		// 	if (stderr) {
+		// 		console.log(`stderr: ${stderr}`);
+		// 		return;
+		// 	}
+		// 	console.log(stdout);
+
+		// }); 
+
+		// // Add project files
+		// exec(`git -C ${projectDir}/ add .`, (error, stdout, stderr) => {
+		// 	if(error){
+		// 		console.log(error.message);
+		// 		return;
+		// 	}
+		// 	if(stderr){
+		// 		console.log(stderr);
+		// 		return;
+		// 	}
+		// 	console.log(stdout);
+		// });
+
+		// // Create initial commit
+		// exec(`git -C ${projectDir}/ commit -m "Initial Commit"`, (error, stdout, stderr) => {
+		// 	if(error){
+		// 		console.log(error.message)
+		// 		return;
+		// 	}
+		// 	if(stderr){
+		// 		console.log(stderr);
+		// 		return;
+		// 	}
+		// 	console.log(stdout);
+		// });
+
+	} catch (error) {
+		console.log(error)
+	}
+
 }
