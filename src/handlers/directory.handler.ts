@@ -1,5 +1,5 @@
 import path from 'path';
-import { existsSync, mkdirSync, copySync, renameSync, removeSync } from 'fs-extra';
+import { existsSync, mkdirSync, copySync, renameSync, removeSync, outputJSONSync } from 'fs-extra';
 import CustomError from '../models';
 import { execSync } from 'child_process';
 
@@ -54,6 +54,18 @@ export const copyTemplate = (projectDir: string, template: string): void => {
  */
 export const deleteProjectDirectory = (projectDir: string): void => {
 	removeSync(projectDir);
+}
+
+/**
+ * Copy a package object to the project dir as "package.json"
+ *
+ * @param projectDir Directory of project
+ * @param packageObj Package object
+ * @returns void
+ */
+export const copyPackageObj = (projectDir: string, packageObj: any): void => {
+    // use 2 space indent for resulting file
+    outputJSONSync(path.join(projectDir, "package.json"), packageObj, {spaces: 2});
 }
 
 /**

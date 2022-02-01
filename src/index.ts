@@ -1,6 +1,7 @@
 import {
 	argumentsHandler, 
-	directoryHandler 
+	directoryHandler,
+	packageHandler
 } from './handlers';
 import CustomError from './models';
 
@@ -22,6 +23,11 @@ const main = () => {
 	directoryHandler.createProjectDirectory(projectDir);
 	directoryHandler.copyTemplate(projectDir, args.template);
 	directoryHandler.initGitRepo(projectDir);
+
+	// build package file, output to project dir, install deps
+	const packageObj = packageHandler.buildPackageObj(args.projectName, args.template);
+	directoryHandler.copyPackageObj(projectDir, packageObj);
+	packageHandler.installDeps(projectDir, args.template);
 }
 
 try {
