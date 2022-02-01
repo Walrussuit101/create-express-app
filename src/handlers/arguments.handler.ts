@@ -1,7 +1,7 @@
 import { arguments } from '../interfaces';
 import CustomError from '../models';
-
-const VALID_TEMPLATES = ['static'];
+import path from 'path';
+import { readdirSync } from 'fs-extra';
 
 /**
  * Get and clean arguments from user
@@ -29,8 +29,9 @@ export const getArguments = (): arguments => {
 
 	// only allow valid templates
 	const template = args[1];
+	const validTemplates = getValidTemplates();
 
-	if (!VALID_TEMPLATES.includes(template)) {
+	if (!validTemplates.includes(template)) {
 		throw new CustomError("E004", `Invalid template provided: "${template}"`);	
 	}
 
@@ -39,4 +40,17 @@ export const getArguments = (): arguments => {
 		projectName,
 		template
 	}
+}
+
+/**
+ * Get valid templates by reading the directory names
+ * of the "templates" directory
+ * 
+ * @returns string[]
+ */
+export const getValidTemplates = (): string[] => {
+	const templateDir = path.join(__dirname, "..", "..", "templates");
+
+	// only get directory names from the './templates' dir, filtering out any possible files
+	return readdirSync(templateDir, {withFileTypes: true}).filter(dir => dir.isDirectory()).map(dir => dir.name);
 }
