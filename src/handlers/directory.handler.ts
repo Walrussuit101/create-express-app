@@ -1,7 +1,7 @@
 import path from 'path';
 import { existsSync, mkdirSync, copySync, renameSync, removeSync } from 'fs-extra';
 import CustomError from '../models';
-import { exec, execSync } from 'child_process';
+import { execSync } from 'child_process';
 
 /**
  * Get the project directory path.
