@@ -1,6 +1,7 @@
 import path from 'path';
 import { existsSync, mkdirSync, copySync, renameSync, removeSync, outputJSONSync} from 'fs-extra';
 import CustomError from '../models';
+import { execSync } from 'child_process';
 
 /**
  * Get the project directory path.
@@ -65,4 +66,17 @@ export const deleteProjectDirectory = (projectDir: string): void => {
 export const copyPackageObj = (projectDir: string, packageObj: any): void => {
     // use 2 space indent for resulting file
     outputJSONSync(path.join(projectDir, "package.json"), packageObj, {spaces: 2});
+}
+
+/**
+ * Initialize a git repository in the project directory.
+ * This also creates the initial commit
+ * 
+ * @param projectDir Directory of Project
+ * @returns void
+ */
+export const initGitRepo = (projectDir: string): void => {
+	execSync(`git -C ${projectDir} init`);
+	execSync(`git -C ${projectDir} add .`);
+	execSync(`git -C ${projectDir} commit -m "Initial Commit"`);
 }
