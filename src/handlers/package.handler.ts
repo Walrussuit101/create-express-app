@@ -5,7 +5,7 @@ const templateSpecDictionary = {
         main: "src/server.ts",
         scripts: {
             start: "npm run compile:client && ts-node src/server.ts",
-            dev: "nodemon -e ts,json,html,css,js --exect \"npm start\"",
+            dev: "nodemon -e ts,json,html,css --exec \"npm start\"",
             "compile:client": "webpack --mode=production --no-stats",
             "compile:client:stats": "webpack --mode=production"
 		},
