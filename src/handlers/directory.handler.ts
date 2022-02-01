@@ -1,5 +1,5 @@
 import path from 'path';
-import { existsSync, mkdirSync, copySync, renameSync, removeSync, outputJSONSync} from 'fs-extra';
+import { existsSync, mkdirSync, copySync, renameSync, removeSync, outputJSONSync } from 'fs-extra';
 import CustomError from '../models';
 import { execSync } from 'child_process';
 
