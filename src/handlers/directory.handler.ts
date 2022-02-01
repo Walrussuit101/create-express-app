@@ -1,7 +1,7 @@
 import path from 'path';
 import { existsSync, mkdirSync, copySync, renameSync, removeSync } from 'fs-extra';
 import CustomError from '../models';
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 
 /**
  * Get the project directory path.
@@ -64,23 +64,7 @@ export const deleteProjectDirectory = (projectDir: string): void => {
  * @returns void
  */
 export const initGitRepo = (projectDir: string): void => {
-	try {
-		//Initialize git
-		exec("git -C " +  projectDir + " init;" 
-		+ "git -C " + projectDir + "/ add .;"
-		+ "git -C "+ projectDir+"/ commit -m \"Initial Commit\";", (error, stdout, stderr) => {
-			if (error) {
-				console.log(`error: ${error.message}`);
-				return;
-			}
-			if (stderr) {
-				console.log(`stderr: ${stderr}`);
-				return;
-			}
-			console.log(stdout);
-		})
-	} catch (error) {
-		console.log(error)
-	}
-
+	execSync(`git -C ${projectDir} init`);
+	execSync(`git -C ${projectDir} add .`);
+	execSync(`git -C ${projectDir} commit -m "Initial Commit"`);
 }
