@@ -14,8 +14,8 @@ class CustomError{
     }
 
     log(){
-        console.error(this.messageColor, this.code, "-", this.message);
-        console.error(this.detailColor, this.detail);
+        console.error(`${this.messageColor}${this.code} - ${this.message}`);
+        console.error(`${this.detailColor}${this.detail}`);
     }
 }
 
