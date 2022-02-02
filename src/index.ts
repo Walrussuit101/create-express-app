@@ -22,7 +22,10 @@ const main = () => {
 	// create project directory and copy template
 	directoryHandler.createProjectDirectory(projectDir);
 	directoryHandler.copyTemplate(projectDir, args.template);
-	directoryHandler.initGitRepo(projectDir);
+	// If the git option was provided, initialize a git repo
+	if("git" in args.options){
+		directoryHandler.initGitRepo(projectDir);
+	}
 
 	// build package file, output to project dir, install deps
 	const packageObj = packageHandler.buildPackageObj(args.projectName, args.template);
