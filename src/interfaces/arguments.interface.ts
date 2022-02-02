@@ -1,4 +1,5 @@
 export interface arguments {
 	projectName: string,
-	template: string
+	template: string,
+	options: string[]
 }
