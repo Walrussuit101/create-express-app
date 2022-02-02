@@ -1,23 +1,23 @@
-// TODO: 
-// flesh out template options once that is firmly decided.
-// maybe also add args to this script? ex: npm run help templates
-// would output explanations regarding templates.
+import { argumentsHandler } from './handlers';
+
+const validTemplates = argumentsHandler.getValidTemplates();
 
 console.log(
 `
-Arguments:
+${"\x1b[4m"}Arguments:${"\x1b[0m"}
+
   1. Project Name
     - Can only contain a-z, A-Z, 0-9, -, and _ characters.
 
   2. Template 
-    - Valid templates are:
-      -
+    - Valid templates are: ${validTemplates.join(", ")}
+    - Use 'npm run help templates' for detailed explanations for each template
 
-Example usage:
+${"\x1b[4m"}Example usage:${"\x1b[0m"}
 
-  "npm start my-project TEMPLATE_NAME"
+  'npm start my-project ${validTemplates[0]}'
 	
-  The above command will create a directory "my-project" in the same directory where
+  The above command will create a directory 'my-project' in the same directory where
   this codebase is. So, if this is in ~/Documents, there will now be a directory called 
   ~/Documents/my-project with the generated project within.
 `
