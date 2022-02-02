@@ -23,7 +23,7 @@ export const getProjectDirectory = (projectName: string): string => {
  */
 export const createProjectDirectory = (projectDir: string): void => {
 	if (existsSync(projectDir)) {
-		throw new CustomError("E003", `Directory : ${projectDir} already exists`);
+		throw new CustomError("E003", `Directory "${projectDir}" already exists`);
 	}
 
 	mkdirSync(projectDir)
