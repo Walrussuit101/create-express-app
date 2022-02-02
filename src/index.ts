@@ -23,7 +23,7 @@ const main = () => {
 	directoryHandler.createProjectDirectory(projectDir);
 	directoryHandler.copyTemplate(projectDir, args.template);
 	// If the git option was provided, initialize a git repo
-	if("git" in args.options){
+	if(args.options.includes("git")){
 		directoryHandler.initGitRepo(projectDir);
 	}
 
