@@ -11,7 +11,7 @@ ${"\x1b[4m"}Arguments:${"\x1b[0m"}
 
   2. Template 
     - Valid templates are: ${validTemplates.join(", ")}
-    - Use 'npm run help templates' for detailed explanations for each template
+    - Use 'npm run help templates' for detailed explanations for each template.
 
 ${"\x1b[4m"}Example usage:${"\x1b[0m"}
 
