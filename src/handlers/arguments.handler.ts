@@ -56,7 +56,10 @@ export const getValidTemplates = (): string[] => {
 }
 
 /**
- * Get and clean help script arguments from user
+ * Get and clean help script arguments from user.
+ * 
+ * Currently only 1 arg 'lookUp' which can be undefined,
+ * so caller must check for that
  * 
  * @returns helpArguments
  * @throws CustomError
