@@ -76,7 +76,7 @@ export const getHelpArguments = (): helpArguments => {
 		const lookUp = args[0];
 
 		if(!lookUpRegex.test(lookUp)){
-			throw new CustomError("E006", `"${lookUp}" is an invalid lookup option`);
+			throw new CustomError("E006", `"${lookUp}" is an invalid lookup value`);
 		}
 
 		return {
