@@ -7,7 +7,11 @@
         "start": "ts-node src/index.ts",
         "dev": "nodemon -e ts,js,json --exec \"ts-node src/index.ts\"",
         "help": "ts-node src/help.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
     },
     "repository": {
         "type": "git",
@@ -29,6 +33,8 @@
         "typescript": "^4.5.5"
     },
     "devDependencies": {
+        "husky": "^7.0.4",
+        "lint-staged": "^12.3.3",
         "prettier": "2.5.1"
     }
 }
