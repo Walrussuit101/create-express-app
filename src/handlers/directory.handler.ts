@@ -5,7 +5,7 @@ import {
     copySync,
     renameSync,
     removeSync,
-    outputJSONSync,
+    outputJSONSync
 } from "fs-extra";
 import CustomError from "../models";
 import { execSync } from "child_process";
@@ -79,7 +79,7 @@ export const deleteProjectDirectory = (projectDir: string): void => {
 export const copyPackageObj = (projectDir: string, packageObj: any): void => {
     // use 2 space indent for resulting file
     outputJSONSync(path.join(projectDir, "package.json"), packageObj, {
-        spaces: 2,
+        spaces: 2
     });
 };
 

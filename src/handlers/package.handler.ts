@@ -7,7 +7,7 @@ const templateSpecDictionary = {
             start: "npm run compile:client && ts-node src/server.ts",
             dev: 'nodemon -e ts,json,html,css --exec "npm start"',
             "compile:client": "webpack --mode=production --no-stats",
-            "compile:client:stats": "webpack --mode=production",
+            "compile:client:stats": "webpack --mode=production"
         },
         dependencies: [
             "@types/express",
@@ -17,9 +17,9 @@ const templateSpecDictionary = {
             "ts-loader",
             "ts-node",
             "typescript",
-            "webpack-cli",
-        ],
-    },
+            "webpack-cli"
+        ]
+    }
 };
 
 /**
@@ -35,7 +35,7 @@ export const buildPackageObj = (projectName: string, template: string) => {
         version: "1.0.0",
         main: {},
         scripts: {},
-        dependencies: {},
+        dependencies: {}
     };
 
     switch (template) {
@@ -73,7 +73,7 @@ export const installDeps = (projectDir: string, template: string): void => {
                 console.log("\x1b[0m");
                 console.log(
                     execSync(`npm install --save ${dep}`, {
-                        cwd: projectDir,
+                        cwd: projectDir
                     }).toString("utf-8")
                 );
             });

@@ -37,7 +37,7 @@ const ErrorDetailDictionary = {
 
     E004:
         "\nPlease provide a valid template." +
-        "\nUse 'npm run help' to see valid template options.\n",
+        "\nUse 'npm run help' to see valid template options.\n"
 };
 
 export default CustomError;

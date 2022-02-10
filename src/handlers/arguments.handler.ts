@@ -44,7 +44,7 @@ export const getArguments = (): arguments => {
     // return cleaned parsed args
     return {
         projectName,
-        template,
+        template
     };
 };
 
