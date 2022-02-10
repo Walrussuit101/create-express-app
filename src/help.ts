@@ -1,9 +1,9 @@
-import { argumentsHandler } from './handlers';
+import { argumentsHandler } from "./handlers";
 
 const validTemplates = argumentsHandler.getValidTemplates();
 
 console.log(
-`
+    `
 ${"\x1b[4m"}Arguments:${"\x1b[0m"}
 
   1. Project Name

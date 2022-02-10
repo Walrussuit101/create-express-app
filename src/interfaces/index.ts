@@ -1,1 +1,1 @@
-export * from './arguments.interface';
+export * from "./arguments.interface";

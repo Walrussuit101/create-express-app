@@ -1,14 +1,14 @@
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 
 const templateSpecDictionary = {
-    "static": {
+    static: {
         main: "src/server.ts",
         scripts: {
             start: "npm run compile:client && ts-node src/server.ts",
-            dev: "nodemon -e ts,json,html,css --exec \"npm start\"",
+            dev: 'nodemon -e ts,json,html,css --exec "npm start"',
             "compile:client": "webpack --mode=production --no-stats",
-            "compile:client:stats": "webpack --mode=production"
-		},
+            "compile:client:stats": "webpack --mode=production",
+        },
         dependencies: [
             "@types/express",
             "@types/node",
@@ -17,10 +17,10 @@ const templateSpecDictionary = {
             "ts-loader",
             "ts-node",
             "typescript",
-            "webpack-cli"
-        ]
-    }
-}
+            "webpack-cli",
+        ],
+    },
+};
 
 /**
  * Build and return the package object
@@ -35,11 +35,11 @@ export const buildPackageObj = (projectName: string, template: string) => {
         version: "1.0.0",
         main: {},
         scripts: {},
-        dependencies: {}
-	}
+        dependencies: {},
+    };
 
     switch (template) {
-        case 'static':
+        case "static":
             const templateSpec = templateSpecDictionary[template];
             packageObj.main = templateSpec.main;
             packageObj.scripts = templateSpec.scripts;
@@ -47,7 +47,7 @@ export const buildPackageObj = (projectName: string, template: string) => {
     }
 
     return packageObj;
-}
+};
 
 /**
  * Install deps for the given template
@@ -58,10 +58,12 @@ export const buildPackageObj = (projectName: string, template: string) => {
  */
 export const installDeps = (projectDir: string, template: string): void => {
     switch (template) {
-        case 'static':
-            templateSpecDictionary[template].dependencies.forEach(dep => {
+        case "static":
+            templateSpecDictionary[template].dependencies.forEach((dep) => {
                 // green bar
-                console.log(`${"\x1b[32m"}====================================================`);
+                console.log(
+                    `${"\x1b[32m"}====================================================`
+                );
 
                 // reset, underline dep
                 console.log(`${"\x1b[0m"}installing: ${"\x1b[4m"}${dep}`);
@@ -69,9 +71,12 @@ export const installDeps = (projectDir: string, template: string): void => {
                 // reset and log out stdout of execSync()
                 // execSync returns a buffer so need to convert to utf-8 formatted string
                 console.log("\x1b[0m");
-                console.log(execSync(`npm install --save ${dep}`, { cwd: projectDir }).toString('utf-8'));
-
+                console.log(
+                    execSync(`npm install --save ${dep}`, {
+                        cwd: projectDir,
+                    }).toString("utf-8")
+                );
             });
-            break;  
+            break;
     }
-}
+};
