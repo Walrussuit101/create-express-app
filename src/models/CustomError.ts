@@ -37,6 +37,10 @@ const ErrorDetailDictionary = {
 
     "E005": "\nA provided optional argument was invalid." +
             "\nUse 'npm run help' to see valid optional arguments",
+
+    "E006": "\nPlease provide a valid lookup value." +
+            "\nThese include 'templates', 'options'\n"
+
 }
 
 export default CustomError;
