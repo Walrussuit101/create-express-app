@@ -33,7 +33,10 @@ const ErrorDetailDictionary = {
             "existing directory, or remove said directory.\n",
     
     "E004": "\nPlease provide a valid template." + 
-            "\nUse 'npm run help' to see valid template options.\n"
+            "\nUse 'npm run help' to see valid template options.\n",
+
+    "E005": "\nA provided optional argument was invalid." +
+            "\nUse 'npm run help' to see valid optional arguments",
 }
 
 export default CustomError;

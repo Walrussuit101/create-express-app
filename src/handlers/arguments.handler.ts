@@ -15,7 +15,7 @@ export const getArguments = (): arguments => {
 	});
 
 	// check all args are present
-	if (args.length !== 2) {
+	if (args.length < 2) {
 		throw new CustomError("E001", "Required arguments not provided");
 	}
 
@@ -35,10 +35,23 @@ export const getArguments = (): arguments => {
 		throw new CustomError("E004", `Invalid template provided: "${template}"`);	
 	}
 
+	// Gather options
+	let options = args.splice(2);
+
+	// Make sure options are text
+	let optionRegex = new RegExp("^[A-za-z]*$");
+	options.forEach(option => {
+		// Test with regex
+		if(!optionRegex.test(option)){
+			throw new CustomError("E005", `${option} is an invalid option.`);
+		}
+	});
+
 	// return cleaned parsed args
 	return {
 		projectName,
-		template
+		template,
+		options
 	}
 }
 
