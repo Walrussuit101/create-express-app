@@ -1,0 +1,19 @@
+name: test-on-pr
+
+on:
+    pull_request:
+        types: [opened, synchronized]
+        branches: [master]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Test PR code
+              run: npm test
