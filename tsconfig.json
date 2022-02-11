@@ -1,7 +1,7 @@
 {
-	"compilerOptions": {
-		"lib": ["ESNext"],
-		"strict": true,
-		"esModuleInterop": true
-	}	
+    "compilerOptions": {
+        "lib": ["ESNext"],
+        "strict": true,
+        "esModuleInterop": true
+    }
 }

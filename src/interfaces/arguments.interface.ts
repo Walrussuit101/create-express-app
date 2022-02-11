@@ -1,9 +1,9 @@
 export interface arguments {
-	projectName: string,
-	template: string,
-	options: string[]
+    projectName: string;
+    template: string;
+    options: string[];
 }
 
 export interface helpArguments {
-	lookUp?: string
+    lookUp?: string;
 }
