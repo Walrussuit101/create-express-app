@@ -1,4 +1,4 @@
-import { arguments } from "../interfaces";
+import { arguments, helpArguments } from "../interfaces";
 import CustomError from "../models";
 import path from "path";
 import { readdirSync } from "fs-extra";
@@ -41,10 +41,23 @@ export const getArguments = (): arguments => {
         );
     }
 
+    // Gather options
+    let options = args.splice(2);
+
+    // Make sure options are text
+    let optionRegex = new RegExp("^[A-za-z]*$");
+    options.forEach((option) => {
+        // Test with regex
+        if (!optionRegex.test(option)) {
+            throw new CustomError("E005", `${option} is an invalid option.`);
+        }
+    });
+
     // return cleaned parsed args
     return {
         projectName,
-        template
+        template,
+        options
     };
 };
 
@@ -65,35 +78,38 @@ export const getValidTemplates = (): string[] => {
 
 /**
  * Get and clean help script arguments from user.
- * 
+ *
  * Currently only 1 arg 'lookUp' which can be undefined,
  * so caller must check for that
- * 
+ *
  * @returns helpArguments
  * @throws CustomError
  */
 export const getHelpArguments = (): helpArguments => {
-	let args = process.argv.splice(2).map(arg => {
-		return arg.toLowerCase();
-	});
+    let args = process.argv.splice(2).map((arg) => {
+        return arg.toLowerCase();
+    });
 
-	// if we have args, validate / clean accepted ones
-	if (args.length) {
-		// make sure lookUp is just a string
-		let lookUpRegex = new RegExp("^[A-za-z]*$");
-		const lookUp = args[0];
+    // if we have args, validate / clean accepted ones
+    if (args.length) {
+        // make sure lookUp is just a string
+        let lookUpRegex = new RegExp("^[A-za-z]*$");
+        const lookUp = args[0];
 
-		if(!lookUpRegex.test(lookUp)){
-			throw new CustomError("E006", `"${lookUp}" is an invalid lookup value`);
-		}
+        if (!lookUpRegex.test(lookUp)) {
+            throw new CustomError(
+                "E006",
+                `"${lookUp}" is an invalid lookup value`
+            );
+        }
 
-		return {
-			lookUp
-		}
-	}
-	
-	// otherwise return undefined
-	return {
-		lookUp: undefined
-	}
-}
+        return {
+            lookUp
+        };
+    }
+
+    // otherwise return undefined
+    return {
+        lookUp: undefined
+    };
+};

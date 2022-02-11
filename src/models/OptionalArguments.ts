@@ -1,5 +1,5 @@
 const OptionalArgumentsDict = {
-    "git": "Creates and initializes a git repo",
-}
+    git: "Creates and initializes a git repo"
+};
 
-export default OptionalArgumentsDict
+export default OptionalArgumentsDict;
