@@ -1,0 +1,1 @@
+console.log("rest-api template");
