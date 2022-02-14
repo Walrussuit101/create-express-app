@@ -2,7 +2,7 @@ name: test-on-pr
 
 on:
   pull_request:
-    types: [opened, synchronized]
+    types: [opened, synchronize]
     branches: [master]
 
 jobs:
