@@ -24,12 +24,12 @@ const ErrorDetailDictionary = {
         "\nPlease provide the minimum arguments:\n\n" +
         "\t1st: Project Name\n" +
         "\t2nd: Template\n\n" +
-        "ex: npm start my-project skeleton\n",
+        "ex: npm start my-project static\n",
 
     E002:
         "\nPlease provide a project name containing only the follow characters:\n\n" +
         "\t a-z, A-Z, 0-9, -, and _\n\n" +
-        "ex: npm start my-project skeleton\n",
+        "ex: npm start my-project static\n",
 
     E003:
         "\nPlease provide a project name that doesn't conflict with an\n" +
