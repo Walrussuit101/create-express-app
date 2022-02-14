@@ -8,7 +8,7 @@ export const get = async (req: Request, res: Response, next: NextFunction): Prom
     try {
         const userId = parseInt(req.params.id);
 
-        // const user = userService.getById(userId);
+        const user = userService.getById(userId);
 
         if (user) return res.json(user);
 
@@ -23,7 +23,7 @@ export const get = async (req: Request, res: Response, next: NextFunction): Prom
  */
 export const all = (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     try {
-        // const users = userService.getAll();
+        const users = userService.getAll();
         return res.json(users);
     } catch(e) {
         return next(e);

@@ -1,4 +1,6 @@
-const USERS: user[] = [
+import { userInterfaces } from '../utils/interfaces';
+
+const USERS: userInterfaces.userFields[] = [
     {
         id: 1,
         firstName: "Test",
@@ -22,9 +24,9 @@ const USERS: user[] = [
  * Get a user based on id
  * 
  * @param userId Id of user to get
- * @returns User | undefined
+ * @returns userFields | undefined
  */
-export const getById = (userId: number): User | undefined => {
+export const getById = (userId: number): userInterfaces.userFields | undefined => {
     const user = USERS.find(user => {
         return user.id === userId
     });
@@ -35,8 +37,8 @@ export const getById = (userId: number): User | undefined => {
 /**
  * Get all users
  * 
- * @returns User[] | []
+ * @returns userFields[] | []
  */
-export const getAll = (): User[] | [] => {
+export const getAll = (): userInterfaces.userFields[] | [] => {
     return USERS;
 }
