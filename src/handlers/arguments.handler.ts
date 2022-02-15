@@ -15,7 +15,7 @@ export const getArguments = (): arguments => {
     });
 
     // check all args are present
-    if (args.length !== 2) {
+    if (args.length < 2) {
         throw new CustomError("E001", "Required arguments not provided");
     }
 
