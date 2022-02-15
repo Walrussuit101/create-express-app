@@ -12,7 +12,8 @@ const USERS: userInterfaces.userFields[] = [
         firstName: "John",
         lastName: "Smith",
         email: "john.smith@test.com"
-    },{
+    },
+    {
         id: 3,
         firstName: "Jane",
         lastName: "Doe",
