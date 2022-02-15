@@ -28,7 +28,9 @@ const main = () => {
                     "\n\n\t1. Project Name" +
                     "\n\t\t - Can only contain a-z, A-Z, 0-9, -, and _ characters." +
                     "\n\n\t2. Template" +
-                    `\n\t\t- Valid templates are: ${validTemplates.join(",")}` +
+                    `\n\t\t- Valid templates are: ${validTemplates.join(
+                        ", "
+                    )}` +
                     "\n\t\t- Use 'npm run help templates' for detailed explanations for each template." +
                     `\n\n${"\x1b[4m"}Example usage:${"\x1b[0m"}` +
                     `\n\n\t'npm start my-project ${validTemplates[0]}'` +
