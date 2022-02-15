@@ -1,7 +1,8 @@
 import express from 'express';
 import nocache from 'nocache';
-import morgan from 'mogran';
+import morgan from 'morgan';
 import cors from 'cors';
+import listEndpoints from 'express-list-endpoints';
 import rootDisplay from './root.display';
 import routes from './routes/index.route';
 
