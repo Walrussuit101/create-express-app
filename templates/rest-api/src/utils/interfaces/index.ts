@@ -1,0 +1,1 @@
+export { userInterfaces } from './user.interfaces';
