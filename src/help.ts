@@ -21,7 +21,7 @@ const main = () => {
         case "options":
             console.log(
                 `${"\x1b[4m"}git${"\x1b[0m"}` +
-                    "\n\n\tThis will create a git repository with a README and a .gitignore file. An initial commit will also be made."
+                    "\n\n\tThis will create a git repository with a README and a .gitignore file. An initial commit will also be made.\n"
             );
 
             break;
