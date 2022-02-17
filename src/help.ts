@@ -19,7 +19,10 @@ const main = () => {
 
             break;
         case "options":
-            console.log("options lookup");
+            console.log(
+                `${"\x1b[4m"}git${"\x1b[0m"}` +
+                    "\n\n\tThis will create a git repository with a README and a .gitignore file. An initial commit will also be made.\n"
+            );
 
             break;
         default:
@@ -32,6 +35,9 @@ const main = () => {
                         ", "
                     )}` +
                     "\n\t\t- Use 'npm run help templates' for detailed explanations for each template." +
+                    "\n\n\t3. Options" +
+                    "\n\t\t- Valid options are: git" +
+                    "\n\t\t- Use 'npm run help options' for detailed explanations for each option." +
                     `\n\n${"\x1b[4m"}Example usage:${"\x1b[0m"}` +
                     `\n\n\t'npm start my-project ${validTemplates[0]}'` +
                     "\n\n\tThe above command will create a directory 'my-project' in the same directory where" +
