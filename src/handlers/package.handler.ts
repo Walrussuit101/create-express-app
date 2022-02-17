@@ -108,7 +108,7 @@ export const installDeps = (projectDir: string, template: string): void => {
  * @param dep Name of dependency to install
  * @returns void
  */
-export const installDep = (projectDir: string, dep: string): void => {
+const installDep = (projectDir: string, dep: string): void => {
     // green bar
     console.log(
         `${"\x1b[32m"}====================================================`
