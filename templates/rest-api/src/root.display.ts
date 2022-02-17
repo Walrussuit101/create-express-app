@@ -1,4 +1,4 @@
-import { name as projectName } from './package.json';
+import { name as projectName } from '../package.json';
 import {Endpoint} from "express-list-endpoints";
 
 const rootDisplay = (endpoints: Endpoint[]): string => {

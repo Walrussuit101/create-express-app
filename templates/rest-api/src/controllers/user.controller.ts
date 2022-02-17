@@ -4,7 +4,7 @@ import { userService } from '../services';
 /**
  * Get a specific user by id from route params
  */
-export const get = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+export const get = (req: Request, res: Response, next: NextFunction): Response | void => {
     try {
         const userId = parseInt(req.params.id);
 
@@ -21,7 +21,7 @@ export const get = async (req: Request, res: Response, next: NextFunction): Prom
 /**
  * Get all users
  */
-export const all = (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+export const all = (req: Request, res: Response, next: NextFunction): Response | void => {
     try {
         const users = userService.getAll();
         return res.json(users);
