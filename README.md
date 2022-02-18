@@ -1,5 +1,7 @@
 # create-express-app
 
+Create express apps from rest APIs to static web servers.
+
 ## Quick Start
 
 ```sh
