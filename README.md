@@ -15,7 +15,7 @@ npm start
 
 ## Arguments
 
-The arguments are the following:<br/>
+The arguments are:<br/>
 
 ```sh
 npm start <PROJECT_NAME> <TEMPLATE> <OPTIONS>
