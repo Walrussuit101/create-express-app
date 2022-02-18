@@ -10,3 +10,13 @@ npm start my-project rest-api git
 cd ../my-project
 npm start
 ```
+
+## Arguments
+
+The arguments are the following:<br/>
+
+```sh
+npm start <PROJECT_NAME> <TEMPLATE> <OPTIONS>
+```
+
+For more info on the arguments and more example usage.
