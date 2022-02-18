@@ -1,4 +1,5 @@
-import express from 'express';
+import 'dotenv/config';
+import express, { Request, Response, NextFunction } from 'express';
 import nocache from 'nocache';
 import morgan from 'morgan';
 import cors from 'cors';
