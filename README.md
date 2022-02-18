@@ -1,6 +1,6 @@
 # create-express-app
 
-Create express apps from rest APIs to static web servers.
+Create express apps from rest APIs to static web servers. :rocket:
 
 ## Quick Start
 
