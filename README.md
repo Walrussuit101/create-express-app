@@ -19,7 +19,7 @@ The arguments are the following:<br/>
 npm start <PROJECT_NAME> <TEMPLATE> <OPTIONS>
 ```
 
-For more info on the arguments and example usage use:<br/>
+For more info on the arguments and example usage :<br/>
 
 ```sh
 npm run help
