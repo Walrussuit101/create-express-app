@@ -118,7 +118,7 @@ describe("installDep()", () => {
     it("calls console.log() more than once", () => {
         packageHandler.installDep(testProjectDir, testDependency);
 
-        expect(logMock).toHaveBeenCalled();
+        expect(logMock.mock.calls.length).toBeGreaterThan(1);
     });
 
     it("calls execSync() with dependency and cwd option set", () => {
