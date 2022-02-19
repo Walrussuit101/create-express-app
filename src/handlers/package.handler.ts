@@ -56,7 +56,7 @@ export const buildPackageObj = (projectName: string, template: string) => {
     const packageObj = {
         name: projectName,
         version: "1.0.0",
-        main: {},
+        main: "",
         scripts: {}
     };
 
