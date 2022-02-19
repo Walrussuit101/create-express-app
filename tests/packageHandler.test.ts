@@ -9,7 +9,7 @@ describe("buildPackageObj()", () => {
         testProjectTemplate
     );
 
-    it("sets the name field correctly", () => {
+    it("sets the name field to given project name", () => {
         expect(packageObj.name).toStrictEqual(testProjectName);
     });
 
