@@ -21,7 +21,7 @@ describe("buildPackageObj()", () => {
         expect(packageObj.main).not.toEqual("");
     });
 
-    it("defines the script field with a non-empty object", () => {
+    it("defines the scripts field with a non-empty object", () => {
         let scriptKeys = Object.keys(packageObj.scripts);
         expect(scriptKeys.length).toBeGreaterThanOrEqual(1);
     });
