@@ -125,7 +125,7 @@ describe("installDep()", () => {
         packageHandler.installDep(testProjectDir, testDependency);
 
         expect(execSyncMock).toHaveBeenCalledTimes(1);
-        expect(execSyncMock).toHaveBeenLastCalledWith(expect.any(String), {
+        expect(execSyncMock).toHaveBeenCalledWith(expect.any(String), {
             cwd: testProjectDir
         });
     });
