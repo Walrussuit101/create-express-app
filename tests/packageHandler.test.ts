@@ -1,4 +1,5 @@
 import { packageHandler } from "../src/handlers";
+import child_process from "child_process";
 
 describe("buildPackageObj()", () => {
     const testProjectName = "test-project";
@@ -41,16 +42,25 @@ describe("buildPackageObj()", () => {
 });
 
 describe("installDeps()", () => {
-    // mock installDep() to just return right away.
-    // we don't want packages to be actually installed when testing.
-    const installDepMock = jest.spyOn(packageHandler, "installDep");
-    installDepMock.mockImplementation(() => {
-        return;
+    let installDepMock: jest.SpyInstance;
+
+    // setup mocks for tests
+    beforeAll(() => {
+        // don't want to actually install a depdency so use an empty implementation
+        installDepMock = jest
+            .spyOn(packageHandler, "installDep")
+            .mockImplementation();
+    });
+
+    // after the tests are done for this suite,
+    // reset any mocked functions back to original implementation
+    afterAll(() => {
+        jest.restoreAllMocks();
     });
 
     // after each test clear any mock usage data
     afterEach(() => {
-        installDepMock.mockClear();
+        jest.clearAllMocks();
     });
 
     it("calls installDep() more than once with the project directory and a dependency", () => {
@@ -59,7 +69,7 @@ describe("installDeps()", () => {
 
         expect(installDepMock.mock.calls.length).toBeGreaterThan(1);
 
-        // for each call, expect the args to be the project directory and a dependency
+        // for each installDep() call, expect the args to be the project directory and a dependency
         installDepMock.mock.calls.forEach((call) => {
             expect(call.length).toEqual(2);
             expect(call[0]).toStrictEqual(testProjectDir);
@@ -73,5 +83,47 @@ describe("installDeps()", () => {
         packageHandler.installDeps("./", "bad-template");
 
         expect(installDepMock).not.toHaveBeenCalled();
+    });
+});
+
+describe("installDep()", () => {
+    let logMock: jest.SpyInstance;
+    let execSyncMock: jest.SpyInstance;
+
+    const testProjectDir = "./";
+    const testDependency = "test-package";
+
+    // setup mock for tests
+    beforeAll(() => {
+        logMock = jest.spyOn(global.console, "log").mockImplementation();
+        execSyncMock = jest
+            .spyOn(child_process, "execSync")
+            .mockReturnValue("");
+    });
+
+    // after the tests are done for this suite,
+    // reset any mocked functions back to original implementation
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // after each test clear any mock usage data
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("calls console.log() more than once", () => {
+        packageHandler.installDep(testProjectDir, testDependency);
+
+        expect(logMock).toHaveBeenCalled();
+    });
+
+    it("calls execSync() with dependency and cwd option set", () => {
+        packageHandler.installDep(testProjectDir, testDependency);
+
+        expect(execSyncMock).toHaveBeenCalledTimes(1);
+        expect(execSyncMock).toHaveBeenLastCalledWith(expect.any(String), {
+            cwd: testProjectDir
+        });
     });
 });
