@@ -95,7 +95,10 @@ describe("installDep()", () => {
 
     // setup mock for tests
     beforeAll(() => {
+        // don't log anything during these tests
         logMock = jest.spyOn(global.console, "log").mockImplementation();
+
+        // don't install any depdencies during these tests
         execSyncMock = jest
             .spyOn(child_process, "execSync")
             .mockReturnValue("");
