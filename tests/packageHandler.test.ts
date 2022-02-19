@@ -39,3 +39,35 @@ describe("buildPackageObj()", () => {
         expect(scriptKeys.length).toStrictEqual(0);
     });
 });
+
+describe("installDeps()", () => {
+    // mock installDep() to just return right away.
+    // we don't want packages to be actually installed when testing.
+    const installDepMock = jest.spyOn(packageHandler, "installDep");
+    installDepMock.mockImplementation(() => {
+        return;
+    });
+
+    // after each test clear any mock usage data
+    afterEach(() => {
+        installDepMock.mockClear();
+    });
+
+    it("calls installDep() more than once with the project directory and a dependency", () => {
+        const testProjectDir = "./";
+        packageHandler.installDeps(testProjectDir, "static");
+
+        expect(installDepMock.mock.calls.length).toBeGreaterThan(1);
+        installDepMock.mock.calls.forEach((call) => {
+            expect(call.length).toEqual(2);
+            expect(call[0]).toStrictEqual(testProjectDir);
+            expect(call[1]).toEqual(expect.any(String));
+        });
+    });
+
+    it("doesn't call installDep() when given an invalid template", () => {
+        packageHandler.installDeps("./", "bad-template");
+
+        expect(installDepMock).not.toHaveBeenCalled();
+    });
+});
