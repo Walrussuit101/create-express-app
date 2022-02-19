@@ -67,6 +67,8 @@ describe("installDeps()", () => {
         });
     });
 
+    // this really should never happen as an error will be thrown by
+    // argumentsHandler, but may as well check this behavior.
     it("doesn't call installDep() when given an invalid template", () => {
         packageHandler.installDeps("./", "bad-template");
 
