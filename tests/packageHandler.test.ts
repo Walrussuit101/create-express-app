@@ -58,6 +58,8 @@ describe("installDeps()", () => {
         packageHandler.installDeps(testProjectDir, "static");
 
         expect(installDepMock.mock.calls.length).toBeGreaterThan(1);
+
+        // for each call, expect the args to be the project directory and a dependency
         installDepMock.mock.calls.forEach((call) => {
             expect(call.length).toEqual(2);
             expect(call[0]).toStrictEqual(testProjectDir);
