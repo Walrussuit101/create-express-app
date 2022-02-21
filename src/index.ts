@@ -1,6 +1,11 @@
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
 import CustomError from "./models";
 
+let PROJECT_DIR_INFO = {
+    projectDir: "",
+    wasMade: false
+};
+
 const main = () => {
     let args = argumentsHandler.getArguments();
     console.log(args);
@@ -17,6 +22,9 @@ const main = () => {
 
     // create project directory and copy template
     directoryHandler.createProjectDirectory(projectDir);
+    PROJECT_DIR_INFO.projectDir = projectDir;
+    PROJECT_DIR_INFO.wasMade = true;
+
     directoryHandler.copyTemplate(projectDir, args.template);
 
     // build package file, output to project dir, install deps
@@ -37,5 +45,10 @@ try {
     main();
 } catch (e: unknown) {
     e instanceof CustomError ? e.log() : console.error(e);
+
+    // if the project directory was made before the error clean it up
+    if (PROJECT_DIR_INFO.wasMade)
+        directoryHandler.deleteProjectDirectory(PROJECT_DIR_INFO.projectDir);
+
     process.exit(1);
 }
