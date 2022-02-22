@@ -7,7 +7,8 @@
         "start": "ts-node src/index.ts",
         "dev": "nodemon -e ts,js,json --exec \"ts-node src/index.ts\"",
         "help": "ts-node src/help.ts",
-        "test": "jest",
+        "test": "jest --verbose",
+        "test:coverage": "jest --verbose --coverage",
         "prepare": "husky install"
     },
     "lint-staged": {
