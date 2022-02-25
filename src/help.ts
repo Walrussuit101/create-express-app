@@ -17,6 +17,17 @@ const main = () => {
                 );
             }
 
+            if (validTemplates.includes("rest-api")) {
+                console.log(
+                    `${"\x1b[4m"}rest-api${"\x1b[0m"}` +
+                        "\n\n\tThis will create a bare-bones REST api server. The server has the following valid routes: GET /, GET /users, and GET /user/:id." +
+                        "\n\tThe project will have dedicated controller, service, and route directories. Specifically, there is an example user controller," +
+                        "\n\tservice, and route file. The user service operates on an in-memory array of users to serve in JSON. To add database functionality" +
+                        "\n\tadd queries / ORM calls in the service that returns data for the controller to respond with. The template also defaults to allow" +
+                        "\n\trequests from localhost:3000 via CORS, this can be changed in the src/index.ts file.\n"
+                );
+            }
+
             break;
         case "options":
             console.log(
