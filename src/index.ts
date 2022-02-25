@@ -15,9 +15,11 @@ const main = () => {
         directoryHandler.deleteProjectDirectory(projectDir);
     }
 
-    // create project directory and copy template
+    // create project directory and copy template and
+    // log a message that this is happening
     directoryHandler.createProjectDirectory(projectDir);
     directoryHandler.copyTemplate(projectDir, args.template);
+    console.log("Creating project directory and copy template...");
 
     // build package file, output to project dir, install deps
     const packageObj = packageHandler.buildPackageObj(
