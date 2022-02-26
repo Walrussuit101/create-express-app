@@ -17,11 +17,12 @@ const main = () => {
 
     // create project directory and copy template and
     // log a message that this is happening
+    console.log("Creating project directory and copying template...");
     directoryHandler.createProjectDirectory(projectDir);
     directoryHandler.copyTemplate(projectDir, args.template);
-    console.log("Creating project directory and copy template...");
 
     // build package file, output to project dir, install deps
+    console.log("Installing template's package dependencies...");
     const packageObj = packageHandler.buildPackageObj(
         args.projectName,
         args.template
@@ -32,6 +33,7 @@ const main = () => {
     // If the git option was provided, initialize a git repo
     if (args.options.includes("git")) {
         directoryHandler.initGitRepo(projectDir);
+        console.log("Git repository initialized with initial commit...");
     }
 };
 
