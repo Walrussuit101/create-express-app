@@ -20,7 +20,9 @@ const main = () => {
         directoryHandler.deleteProjectDirectory(projectDir);
     }
 
-    // create project directory and copy template
+    // create project directory and copy template and
+    // log a message that this is happening
+    console.log("Creating project directory and copying template...");
     directoryHandler.createProjectDirectory(projectDir);
     PROJECT_DIR_INFO.projectDir = projectDir;
     PROJECT_DIR_INFO.wasMade = true;
@@ -28,6 +30,7 @@ const main = () => {
     directoryHandler.copyTemplate(projectDir, args.template);
 
     // build package file, output to project dir, install deps
+    console.log("Installing template's package dependencies...");
     const packageObj = packageHandler.buildPackageObj(
         args.projectName,
         args.template
@@ -38,6 +41,7 @@ const main = () => {
     // If the git option was provided, initialize a git repo
     if (args.options.includes("git")) {
         directoryHandler.initGitRepo(projectDir);
+        console.log("Git repository initialized with initial commit...");
     }
 };
 
