@@ -1,5 +1,5 @@
 # create-express-app: static
-This project was created using create-express-app. :rocket:
+This project was created using [create-express-app](https://github.com/Walrussuit101/create-express-app). :rocket:
 # scripts
 ```sh
 npm start
