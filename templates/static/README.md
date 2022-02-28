@@ -4,7 +4,7 @@ This project was created using [create-express-app](https://github.com/Walrussui
 ```sh
 npm start
 ```
-This will compile the client TypeScript code (using [webpack](https://webpack.js.org/)) and start the web server on localhost at port 8080 (unless you provide a `PORT` environment varialbe)
+This will compile the client TypeScript code (using [webpack](https://webpack.js.org/)) and start the web server on localhost at port 8080 (unless you provide a `PORT` environment variable)
 ```sh
 npm run dev
 ```
