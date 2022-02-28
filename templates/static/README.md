@@ -1,4 +1,4 @@
-# create-express-app: `static` template
+# `create-express-app: static template`
 This project was created using create-express-app. :rocket:
 # scripts
 ```sh
