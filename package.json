@@ -9,6 +9,7 @@
         "help": "ts-node src/help.ts",
         "test": "jest --verbose",
         "test:coverage": "jest --verbose --coverage",
+        "compile": "tsc",
         "prepare": "husky install"
     },
     "lint-staged": {
