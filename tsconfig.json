@@ -3,7 +3,8 @@
         "lib": ["ESNext"],
         "strict": true,
         "esModuleInterop": true,
-        "outDir": "./build"
+        "outDir": "./build",
+        "rootDir": "./"
     },
     "exclude": ["./templates/*", "./tests/*"]
 }
