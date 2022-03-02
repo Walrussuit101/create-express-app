@@ -3,7 +3,3 @@ export interface arguments {
     template: string;
     createGit: boolean;
 }
-
-export interface helpArguments {
-    lookUp?: string;
-}
