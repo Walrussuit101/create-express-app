@@ -45,7 +45,7 @@ describe("log()", () => {
 
         expect(secondErrorCallArg).toContain("\x1b[0m");
         expect(secondErrorCallArg).toContain(
-            "Please provide the minimum arguments:"
+            "Please provide a project name containing only the following characters:"
         );
     });
 });
