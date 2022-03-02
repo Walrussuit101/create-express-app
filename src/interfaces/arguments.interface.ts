@@ -1,7 +1,7 @@
 export interface arguments {
     projectName: string;
     template: string;
-    options: string[];
+    createGit: boolean;
 }
 
 export interface helpArguments {

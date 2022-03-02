@@ -2,6 +2,7 @@
     "compilerOptions": {
         "lib": ["ESNext"],
         "strict": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     }
 }

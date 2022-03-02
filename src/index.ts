@@ -1,4 +1,8 @@
+import { program } from "commander";
+import packageFile from "../package.json";
+
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
+import { arguments } from "./interfaces";
 import CustomError from "./models";
 
 let PROJECT_DIR_INFO = {
@@ -6,10 +10,7 @@ let PROJECT_DIR_INFO = {
     wasMade: false
 };
 
-const main = () => {
-    let args = argumentsHandler.getArguments();
-    console.log(args);
-
+const main = (args: arguments) => {
     // get project directory
     const projectDir = directoryHandler.getProjectDirectory(args.projectName);
 
@@ -39,14 +40,34 @@ const main = () => {
     packageHandler.installDeps(projectDir, args.template);
 
     // If the git option was provided, initialize a git repo
-    if (args.options.includes("git")) {
+    if (args.createGit) {
         directoryHandler.initGitRepo(projectDir);
         console.log("Git repository initialized with initial commit...");
     }
 };
 
 try {
-    main();
+    program
+        .name(packageFile.name)
+        .version(packageFile.version)
+        .description(packageFile.description)
+        .usage("<project_name> <template> [options]")
+        .argument("<project_name>", "The name for your project")
+        .argument("<template>", "The template to use for your project")
+        .option(
+            "--git",
+            "Create a git repository & initial commit in your project"
+        )
+        .action((projectName, template, options) => {
+            const args = argumentsHandler.getArguments(
+                projectName,
+                template,
+                options
+            );
+            main(args);
+        });
+
+    program.parse();
 } catch (e: unknown) {
     e instanceof CustomError ? e.log() : console.error(e);
 
