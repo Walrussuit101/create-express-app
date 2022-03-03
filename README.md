@@ -5,10 +5,7 @@ Create express apps ranging from rest APIs to static web servers. :rocket:
 ## Quick Start
 
 ```sh
-git clone git@github.com:Walrussuit101/create-express-app.git
-cd create-express-app
-npm install
-npm start my-project rest-api git
+npx @walrussuit/create-express-app my-project rest-api --git
 cd ../my-project
 npm start
 ```
@@ -18,11 +15,11 @@ npm start
 The arguments are:<br/>
 
 ```sh
-npm start <PROJECT_NAME> <TEMPLATE> <OPTIONS>
+npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> <OPTIONS>
 ```
 
 For more info on the arguments and example usage:<br/>
 
 ```sh
-npm run help
+npx @walrussuit/create-express-app --help
 ```
