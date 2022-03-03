@@ -2,6 +2,9 @@
     "compilerOptions": {
         "lib": ["ESNext"],
         "strict": true,
-        "esModuleInterop": true
-    }
+        "esModuleInterop": true,
+        "outDir": "./build",
+        "rootDir": "./"
+    },
+    "exclude": ["./templates/*", "./tests/*"]
 }
