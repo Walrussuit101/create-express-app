@@ -31,7 +31,7 @@ export const getProjectDirectory = (projectName: string): string => {
 export const createProjectDirectory = (projectDir: string): void => {
     if (existsSync(projectDir)) {
         throw new CustomError(
-            "E003",
+            "E002",
             `Directory "${projectDir}" already exists`
         );
     }

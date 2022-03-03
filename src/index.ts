@@ -1,15 +1,17 @@
+import { program } from "commander";
+import packageFile from "../package.json";
+
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
+import { arguments } from "./interfaces";
 import CustomError from "./models";
+import helpString from "./help";
 
 let PROJECT_DIR_INFO = {
     projectDir: "",
     wasMade: false
 };
 
-const main = () => {
-    let args = argumentsHandler.getArguments();
-    console.log(args);
-
+const main = (args: arguments) => {
     // get project directory
     const projectDir = directoryHandler.getProjectDirectory(args.projectName);
 
@@ -39,14 +41,43 @@ const main = () => {
     packageHandler.installDeps(projectDir, args.template);
 
     // If the git option was provided, initialize a git repo
-    if (args.options.includes("git")) {
+    if (args.createGit) {
         directoryHandler.initGitRepo(projectDir);
         console.log("Git repository initialized with initial commit...");
     }
 };
 
 try {
-    main();
+    // setup commander to accept args/options
+    program
+        .name(packageFile.name)
+        .version(packageFile.version)
+        .description(packageFile.description)
+        .addHelpText("after", helpString)
+        .usage("<project_name> <template> [options]")
+        .argument("<project_name>", "The name for your project")
+        .argument(
+            "<template>",
+            "The template to use for your project (see valid templates below)"
+        )
+        .option(
+            "--git",
+            "Create a git repository & initial commit in your project"
+        )
+        .action((projectName, template, options) => {
+            // clean / build args obj
+            const args = argumentsHandler.getArguments(
+                projectName,
+                template,
+                options
+            );
+
+            // start main process
+            main(args);
+        });
+
+    // accept input
+    program.parse();
 } catch (e: unknown) {
     e instanceof CustomError ? e.log() : console.error(e);
 

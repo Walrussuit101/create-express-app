@@ -6,7 +6,6 @@
     "scripts": {
         "start": "ts-node src/index.ts",
         "dev": "nodemon -e ts,js,json --exec \"ts-node src/index.ts\"",
-        "help": "ts-node src/help.ts",
         "test": "jest --verbose",
         "test:coverage": "jest --verbose --coverage",
         "compile": "tsc",
@@ -27,7 +26,8 @@
     },
     "homepage": "https://github.com/Walrussuit101/create-express-app#readme",
     "dependencies": {
-        "fs-extra": "^10.0.0"
+        "fs-extra": "^10.0.0",
+        "commander": "^9.0.0"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",

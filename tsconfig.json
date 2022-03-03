@@ -3,6 +3,7 @@
         "lib": ["ESNext"],
         "strict": true,
         "esModuleInterop": true,
+        "resolveJsonModule": true,
         "outDir": "./build",
         "rootDir": "./"
     },
