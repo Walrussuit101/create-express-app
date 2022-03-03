@@ -16,7 +16,7 @@ const main = () => {
     packageObj.bin = "src/index.js";
 
     writeJSONSync(packagePath, packageObj, { spaces: 4 });
-    console.log("Build package.json created");
+    console.log("Build package.json updated");
 
     // copy README and templates
     const readmePath = path.join(__dirname, "..", "README.md");
