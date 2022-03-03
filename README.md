@@ -15,7 +15,7 @@ npm start
 The arguments are:<br/>
 
 ```sh
-npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> <OPTIONS>
+npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> [OPTIONS]
 ```
 
 For more info on the arguments and example usage:<br/>
