@@ -26,8 +26,10 @@
     },
     "homepage": "https://github.com/Walrussuit101/create-express-app#readme",
     "dependencies": {
+        "commander": "^9.0.0",
         "fs-extra": "^10.0.0",
-        "commander": "^9.0.0"
+        "pino": "^7.8.0",
+        "pino-pretty": "^7.5.3"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
