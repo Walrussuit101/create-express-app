@@ -1,4 +1,4 @@
-import CustomError from "../src/models";
+import { CustomError } from "../src/models";
 
 describe("log()", () => {
     let consoleErrorMock: jest.SpyInstance;

@@ -1,5 +1,5 @@
 import { arguments } from "../interfaces";
-import CustomError from "../models";
+import { CustomError } from "../models";
 import path from "path";
 import { readdirSync } from "fs-extra";
 

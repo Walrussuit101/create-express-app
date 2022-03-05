@@ -7,7 +7,7 @@ import {
     removeSync,
     outputJSONSync
 } from "fs-extra";
-import CustomError from "../models";
+import { CustomError } from "../models";
 import { execSync } from "child_process";
 
 /**
