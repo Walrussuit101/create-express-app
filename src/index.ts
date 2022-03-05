@@ -45,7 +45,7 @@ const main = (args: arguments) => {
     // If the git option was provided, initialize a git repo
     if (args.createGit) {
         directoryHandler.initGitRepo(projectDir);
-        logger.info("Git repository initialized with initial commit...");
+        logger.info("Git repository initialized with initial commit.");
     }
 };
 
