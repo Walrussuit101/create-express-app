@@ -1,7 +1,8 @@
-import { arguments } from "../interfaces";
-import { CustomError } from "../models";
 import path from "path";
 import { readdirSync } from "fs-extra";
+
+import { arguments } from "../interfaces";
+import { CustomError } from "../models";
 
 /**
  * Get and clean arguments from user

@@ -1,4 +1,5 @@
 import path from "path";
+import { execSync } from "child_process";
 import {
     existsSync,
     mkdirSync,
@@ -7,8 +8,8 @@ import {
     removeSync,
     outputJSONSync
 } from "fs-extra";
+
 import { CustomError } from "../models";
-import { execSync } from "child_process";
 
 /**
  * Get the project directory path.
