@@ -81,7 +81,7 @@ try {
     // accept input
     program.parse();
 } catch (e: unknown) {
-    e instanceof CustomError ? e.log() : console.error(e);
+    e instanceof CustomError ? logger.error(e) : console.error(e);
 
     // if the project directory was made before the error clean it up
     if (PROJECT_DIR_INFO.wasMade)

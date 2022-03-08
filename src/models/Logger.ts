@@ -1,13 +1,16 @@
 import chalk from "chalk";
+import { CustomError } from "./";
 
 class Logger {
     info(message: string) {
         console.log(`[${chalk.green("INFO")}] ${message}`);
     }
 
-    error(code: string, message: string, detail: string) {
+    error(customError: CustomError) {
         console.error(
-            `[${chalk.red(code)}] ${chalk.red(message)}\n${chalk.red(detail)}`
+            `[${chalk.red(customError.code)}] ${chalk.red(
+                customError.message
+            )}\n${chalk.red(customError.detail)}`
         );
     }
 }
