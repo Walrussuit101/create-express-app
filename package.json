@@ -1,5 +1,5 @@
 {
-    "name": "create-express-app",
+    "name": "@walrussuit/create-express-app",
     "version": "1.0.0",
     "description": "A tool to quickstart various express-y projects using templates",
     "main": "src/index.ts",
@@ -9,6 +9,7 @@
         "test": "jest --verbose",
         "test:coverage": "jest --verbose --coverage",
         "compile": "tsc",
+        "build": "npm run test && npm run compile && ts-node src/build.ts",
         "prepare": "husky install"
     },
     "lint-staged": {

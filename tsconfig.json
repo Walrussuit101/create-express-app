@@ -7,5 +7,5 @@
         "outDir": "./build",
         "rootDir": "./"
     },
-    "exclude": ["./templates/*", "./tests/*"]
+    "exclude": ["./templates/*", "./tests/*", "./build/*", "./src/build.ts"]
 }

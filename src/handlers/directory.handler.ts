@@ -18,7 +18,7 @@ import { execSync } from "child_process";
  * @returns string
  */
 export const getProjectDirectory = (projectName: string): string => {
-    return path.join(__dirname, "..", "..", "..", projectName);
+    return path.join(process.cwd(), "..", projectName);
 };
 
 /**
