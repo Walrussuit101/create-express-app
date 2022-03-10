@@ -25,11 +25,14 @@ const main = (args: arguments) => {
 
     // create project directory and copy template and
     // log a message that this is happening
-    console.log("Creating project directory and copying template...");
-    directoryHandler.createProjectDirectory(projectDir);
-    PROJECT_DIR_INFO.projectDir = projectDir;
-    PROJECT_DIR_INFO.wasMade = true;
+    if (args.projectName !== ".") {
+        console.log("Creating project directory...");
+        directoryHandler.createProjectDirectory(projectDir);
+        PROJECT_DIR_INFO.projectDir = projectDir;
+        PROJECT_DIR_INFO.wasMade = true;
+    }
 
+    console.log("Copying template...");
     directoryHandler.copyTemplate(projectDir, args.template);
 
     // build package file, output to project dir, install deps
