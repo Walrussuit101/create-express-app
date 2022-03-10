@@ -22,7 +22,7 @@ class CustomError {
 const ErrorDetailDictionary = {
     E001:
         "\nPlease provide a project name containing only the following characters:\n\n" +
-        "\t a-z, A-Z, 0-9, -, and _\n\n" +
+        "\t a-z, A-Z, 0-9, -, _, and .\n\n" +
         "ex: my-project\n",
 
     E002:
