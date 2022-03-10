@@ -6,6 +6,7 @@ const helpString = `
 Valid arguments:
   project_name:
     - can only contain a-z, A-Z, 0-9, -, and _ characters
+    - to make in current directory use .
 
   template:
     - ${validTemplates.join(", ")}
