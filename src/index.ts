@@ -23,8 +23,8 @@ const main = (args: arguments) => {
         directoryHandler.deleteProjectDirectory(projectDir);
     }
 
-    // create project directory and copy template and
-    // log a message that this is happening
+    // if the project isn't going in the cwd, create the directory
+    // and inform user
     if (args.projectName !== ".") {
         console.log("Creating project directory...");
         directoryHandler.createProjectDirectory(projectDir);
@@ -32,6 +32,8 @@ const main = (args: arguments) => {
         PROJECT_DIR_INFO.wasMade = true;
     }
 
+    // copy template code to project directory
+    // and inform user
     console.log("Copying template...");
     directoryHandler.copyTemplate(projectDir, args.template);
 
