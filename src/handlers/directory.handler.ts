@@ -19,7 +19,7 @@ import { CustomError } from "../models";
  * @returns string
  */
 export const getProjectDirectory = (projectName: string): string => {
-    return path.join(process.cwd(), "..", projectName);
+    return path.join(process.cwd(), projectName);
 };
 
 /**

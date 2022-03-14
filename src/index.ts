@@ -25,13 +25,18 @@ const main = (args: arguments) => {
         directoryHandler.deleteProjectDirectory(projectDir);
     }
 
-    // create project directory and copy template and
-    // log a message that this is happening
-    logger.info("Creating project directory and copying template...");
-    directoryHandler.createProjectDirectory(projectDir);
-    PROJECT_DIR_INFO.projectDir = projectDir;
-    PROJECT_DIR_INFO.wasMade = true;
+    // if the project isn't going in the cwd, create the directory
+    // and inform user
+    if (args.projectName !== ".") {
+        logger.info("Creating project directory...");
+        directoryHandler.createProjectDirectory(projectDir);
+        PROJECT_DIR_INFO.projectDir = projectDir;
+        PROJECT_DIR_INFO.wasMade = true;
+    }
 
+    // copy template code to project directory
+    // and inform user
+    logger.info("Copying template...");
     directoryHandler.copyTemplate(projectDir, args.template);
 
     // build package file, output to project dir, install deps

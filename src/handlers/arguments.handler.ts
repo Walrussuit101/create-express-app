@@ -21,8 +21,8 @@ export const getArguments = (
     const lowerName = projectName.toLowerCase();
     const lowerTemplate = template.toLowerCase();
 
-    // only allow project name to have letters, numbers, -, and _
-    const regex = new RegExp("^[A-Za-z0-9_-]*$");
+    // only allow project name to have letters, numbers, -, _, and .
+    const regex = new RegExp("^[A-Za-z0-9_.-]*$");
 
     if (!regex.test(lowerName)) {
         throw new CustomError(
