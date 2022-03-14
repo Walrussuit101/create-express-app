@@ -1,9 +1,8 @@
-import { execSync } from "child_process";
+import { exec } from "child_process";
+import ora from "ora";
 import chalk from "chalk";
 
-import { Logger } from "../models";
-
-const logger = new Logger();
+const spinner = ora();
 
 const templateSpecDictionary = {
     static: {
@@ -91,17 +90,20 @@ export const buildPackageObj = (projectName: string, template: string) => {
  * @param template Template name
  * @returns void
  */
-export const installDeps = (projectDir: string, template: string): void => {
+export const installDeps = async (
+    projectDir: string,
+    template: string
+): Promise<void> => {
     switch (template) {
         case "static":
-            templateSpecDictionary[template].dependencies.forEach((dep) =>
-                installDep(projectDir, dep)
-            );
+            for (const dep of templateSpecDictionary[template].dependencies) {
+                await installDep(projectDir, dep);
+            }
             break;
         case "rest-api":
-            templateSpecDictionary[template].dependencies.forEach((dep) =>
-                installDep(projectDir, dep)
-            );
+            for (const dep of templateSpecDictionary[template].dependencies) {
+                await installDep(projectDir, dep);
+            }
             break;
     }
 };
@@ -113,7 +115,24 @@ export const installDeps = (projectDir: string, template: string): void => {
  * @param dep Name of dependency to install
  * @returns void
  */
-export const installDep = (projectDir: string, dep: string): void => {
-    logger.info(`installing: ${chalk.underline(dep)}`);
-    execSync(`npm install --save ${dep}`, { cwd: projectDir });
+export const installDep = async (
+    projectDir: string,
+    dep: string
+): Promise<void> => {
+    spinner.start(`installing ${chalk.underline(dep)}`);
+    return new Promise((resolve, reject) => {
+        exec(`npm install --save ${dep}`, { cwd: projectDir }).on(
+            "close",
+            (code) => {
+                if (code === 0) {
+                    spinner.succeed();
+                    resolve();
+                    return;
+                }
+
+                spinner.fail();
+                reject();
+            }
+        );
+    });
 };
