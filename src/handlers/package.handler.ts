@@ -1,4 +1,9 @@
 import { execSync } from "child_process";
+import chalk from "chalk";
+
+import { Logger } from "../models";
+
+const logger = new Logger();
 
 const templateSpecDictionary = {
     static: {
@@ -109,20 +114,6 @@ export const installDeps = (projectDir: string, template: string): void => {
  * @returns void
  */
 export const installDep = (projectDir: string, dep: string): void => {
-    // green bar
-    console.log(
-        `${"\x1b[32m"}====================================================`
-    );
-
-    // reset, underline dep
-    console.log(`${"\x1b[0m"}installing: ${"\x1b[4m"}${dep}`);
-
-    // reset and log out stdout of execSync()
-    // execSync returns a buffer so need to convert to utf-8 formatted string
-    console.log("\x1b[0m");
-    console.log(
-        execSync(`npm install --save ${dep}`, {
-            cwd: projectDir
-        }).toString("utf-8")
-    );
+    logger.info(`installing: ${chalk.underline(dep)}`);
+    execSync(`npm install --save ${dep}`, { cwd: projectDir });
 };

@@ -1,6 +1,9 @@
 import { readFileSync, writeJSONSync, copySync } from "fs-extra";
 import path from "path";
 
+import { Logger } from "./models";
+
+const logger = new Logger();
 const buildDirPath = path.join(__dirname, "..", "build");
 
 const main = () => {
@@ -16,7 +19,7 @@ const main = () => {
     packageObj.bin = "src/index.js";
 
     writeJSONSync(packagePath, packageObj, { spaces: 4 });
-    console.log("Build package.json updated");
+    logger.info("Build package.json updated");
 
     // copy README and templates
     const readmePath = path.join(__dirname, "..", "README.md");
@@ -25,7 +28,7 @@ const main = () => {
     copySync(templatesPath, path.join(buildDirPath, "templates"), {
         recursive: true
     });
-    console.log("README file and templates directory copied");
+    logger.info("README file and templates directory copied");
 };
 
 try {

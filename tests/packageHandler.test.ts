@@ -1,4 +1,6 @@
 import { packageHandler } from "../src/handlers";
+import { Logger } from "../src/models";
+
 import child_process from "child_process";
 
 describe("buildPackageObj()", () => {
@@ -87,7 +89,7 @@ describe("installDeps()", () => {
 });
 
 describe("installDep()", () => {
-    let logMock: jest.SpyInstance;
+    let logInfoMock: jest.SpyInstance;
     let execSyncMock: jest.SpyInstance;
 
     const testProjectDir = "./";
@@ -96,7 +98,7 @@ describe("installDep()", () => {
     // setup mock for tests
     beforeAll(() => {
         // don't log anything during these tests
-        logMock = jest.spyOn(global.console, "log").mockImplementation();
+        logInfoMock = jest.spyOn(Logger.prototype, "info").mockImplementation();
 
         // don't install any depdencies during these tests
         execSyncMock = jest
@@ -115,10 +117,10 @@ describe("installDep()", () => {
         jest.clearAllMocks();
     });
 
-    it("calls console.log() more than once", () => {
+    it("logs dependency using the logger", () => {
         packageHandler.installDep(testProjectDir, testDependency);
 
-        expect(logMock.mock.calls.length).toBeGreaterThan(1);
+        expect(logInfoMock).toHaveBeenCalled();
     });
 
     it("calls execSync() with dependency and cwd option set", () => {
