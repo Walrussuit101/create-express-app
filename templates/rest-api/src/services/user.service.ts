@@ -49,8 +49,27 @@ export const getAll = (): userInterfaces.userFields[] | [] => {
  * 
  * @param userId number
  */
-export const deleteById = (userId: number) => {
+export const deleteById = (userId: number): void => {
     USERS = USERS.filter(user => {
         return user.id !== userId
     });
 }
+
+/**
+ * Update a user
+ * 
+ * @param updatedUser Updated user object
+ * @returns userFields | undefined
+ */
+export const update = (updatedUser: userInterfaces.userFields): userInterfaces.userFields | undefined => {
+    const userIndex = USERS.findIndex(user => {
+        return user.id === updatedUser.id
+    });
+
+    if (userIndex === -1) return undefined
+
+    USERS[userIndex] = updatedUser;
+    return USERS[userIndex];
+}
+
+    
