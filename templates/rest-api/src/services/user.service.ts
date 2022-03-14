@@ -71,5 +71,3 @@ export const update = (updatedUser: userInterfaces.userFields): userInterfaces.u
     USERS[userIndex] = updatedUser;
     return USERS[userIndex];
 }
-
-    
