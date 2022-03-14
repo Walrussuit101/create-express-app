@@ -4,8 +4,10 @@ import packageFile from "../package.json";
 
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
 import { arguments } from "./interfaces";
-import CustomError from "./models";
+import { Logger, CustomError } from "./models";
 import helpString from "./help";
+
+const logger = new Logger();
 
 let PROJECT_DIR_INFO = {
     projectDir: "",
@@ -25,7 +27,7 @@ const main = (args: arguments) => {
 
     // create project directory and copy template and
     // log a message that this is happening
-    console.log("Creating project directory and copying template...");
+    logger.info("Creating project directory and copying template...");
     directoryHandler.createProjectDirectory(projectDir);
     PROJECT_DIR_INFO.projectDir = projectDir;
     PROJECT_DIR_INFO.wasMade = true;
@@ -33,7 +35,7 @@ const main = (args: arguments) => {
     directoryHandler.copyTemplate(projectDir, args.template);
 
     // build package file, output to project dir, install deps
-    console.log("Installing template's package dependencies...");
+    logger.info("Installing template's package dependencies...");
     const packageObj = packageHandler.buildPackageObj(
         args.projectName,
         args.template
@@ -44,7 +46,7 @@ const main = (args: arguments) => {
     // If the git option was provided, initialize a git repo
     if (args.createGit) {
         directoryHandler.initGitRepo(projectDir);
-        console.log("Git repository initialized with initial commit...");
+        logger.info("Git repository initialized with initial commit.");
     }
 };
 
@@ -80,7 +82,7 @@ try {
     // accept input
     program.parse();
 } catch (e: unknown) {
-    e instanceof CustomError ? e.log() : console.error(e);
+    e instanceof CustomError ? logger.error(e) : console.error(e);
 
     // if the project directory was made before the error clean it up
     if (PROJECT_DIR_INFO.wasMade)

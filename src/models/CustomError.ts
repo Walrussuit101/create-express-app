@@ -1,21 +1,12 @@
 class CustomError {
-    private code: keyof typeof ErrorDetailDictionary;
-
-    private message: string;
-    private messageColor = "\x1b[31m"; // red color
-
-    private detail: string;
-    private detailColor = "\x1b[0m"; // reset color for detail string
+    public code: keyof typeof ErrorDetailDictionary;
+    public message: string;
+    public detail: string;
 
     constructor(code: keyof typeof ErrorDetailDictionary, message: string) {
         this.code = code;
         this.message = message;
         this.detail = ErrorDetailDictionary[code]; // look up detail using the error code as key
-    }
-
-    log() {
-        console.error(`${this.messageColor}${this.code} - ${this.message}`);
-        console.error(`${this.detailColor}${this.detail}`);
     }
 }
 
