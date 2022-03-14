@@ -1,6 +1,6 @@
 import { userInterfaces } from '../utils/interfaces';
 
-const USERS: userInterfaces.userFields[] = [
+let USERS: userInterfaces.userFields[] = [
     {
         id: 1,
         firstName: "Test",
@@ -42,4 +42,15 @@ export const getById = (userId: number): userInterfaces.userFields | undefined =
  */
 export const getAll = (): userInterfaces.userFields[] | [] => {
     return USERS;
+}
+
+/**
+ * Remove user by id
+ * 
+ * @param userId number
+ */
+export const deleteById = (userId: number) => {
+    USERS = USERS.filter(user => {
+        return user.id !== userId
+    });
 }
