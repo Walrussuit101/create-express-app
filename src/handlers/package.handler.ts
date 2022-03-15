@@ -1,6 +1,7 @@
 import { exec } from "child_process";
-import { Spinner } from "../models";
 import chalk from "chalk";
+
+import { Spinner } from "../models";
 
 const templateSpecDictionary = {
     static: {
