@@ -1,8 +1,7 @@
-import { packageHandler } from "../src/handlers";
-import { Logger } from "../src/models";
-
 import child_process, { ChildProcess } from "child_process";
-import ora, { Ora } from "ora";
+
+import { packageHandler } from "../src/handlers";
+import { Spinner } from "../src/models";
 
 describe("buildPackageObj()", () => {
     const testProjectName = "test-project";
@@ -90,7 +89,7 @@ describe("installDeps()", () => {
 });
 
 describe("installDep()", () => {
-    let oraStartMock: jest.SpyInstance;
+    let spinnerMock: jest.SpyInstance;
     let execMock: jest.SpyInstance;
     let execProc = new ChildProcess();
 
@@ -99,9 +98,8 @@ describe("installDep()", () => {
 
     // setup mock for tests
     beforeAll(() => {
-        oraStartMock = jest.spyOn(ora(), "start").mockImplementation();
-        jest.spyOn(ora(), "succeed").mockImplementation();
-        jest.spyOn(ora(), "fail").mockImplementation();
+        // don't actually start the spinner
+        spinnerMock = jest.spyOn(Spinner, "start").mockImplementation();
 
         // don't install any depdencies during these tests
         execMock = jest.spyOn(child_process, "exec").mockReturnValue(execProc);
@@ -123,11 +121,12 @@ describe("installDep()", () => {
             execProc.emit("close");
         });
 
-        expect(oraStartMock).toHaveBeenCalled();
+        expect(spinnerMock).toHaveBeenCalled();
     });
 
     it("calls exec() with dependency and cwd option set", () => {
         packageHandler.installDep(testProjectDir, testDependency).then(() => {
+            // need to do this so the installDep() call doesn't hang
             execProc.emit("close");
         });
 

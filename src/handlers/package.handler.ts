@@ -1,8 +1,6 @@
 import { exec } from "child_process";
-import ora from "ora";
+import { Spinner } from "../models";
 import chalk from "chalk";
-
-const spinner = ora();
 
 const templateSpecDictionary = {
     static: {
@@ -119,18 +117,18 @@ export const installDep = async (
     projectDir: string,
     dep: string
 ): Promise<void> => {
-    spinner.start(`installing ${chalk.underline(dep)}`);
+    Spinner.start(`installing ${chalk.underline(dep)}`);
     return new Promise((resolve, reject) => {
         exec(`npm install --save ${dep}`, { cwd: projectDir }).on(
             "close",
             (code) => {
                 if (code === 0) {
-                    spinner.succeed();
+                    Spinner.succeed();
                     resolve();
                     return;
                 }
 
-                spinner.fail();
+                Spinner.fail();
                 reject();
             }
         );
