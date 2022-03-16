@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { program } from "commander";
+import { sync as commandExistsSync } from "command-exists";
 import packageFile from "../package.json";
 
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
@@ -50,6 +51,9 @@ const main = (args: arguments) => {
 
     // If the git option was provided, initialize a git repo
     if (args.createGit) {
+        if (!commandExistsSync("git"))
+            throw new CustomError("E004", "Git not installed");
+
         directoryHandler.initGitRepo(projectDir);
         logger.info("Git repository initialized with initial commit.");
     }
