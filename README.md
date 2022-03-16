@@ -6,7 +6,7 @@ Create express apps ranging from rest APIs to static web servers. :rocket:
 
 ```sh
 npx @walrussuit/create-express-app my-project rest-api --git
-cd ../my-project
+cd my-project
 npm start
 ```
 
