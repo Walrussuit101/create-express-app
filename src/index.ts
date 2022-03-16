@@ -49,8 +49,9 @@ const main = (args: arguments) => {
     directoryHandler.copyPackageObj(projectDir, packageObj);
     packageHandler.installDeps(projectDir, args.template);
 
-    // If the git option was provided, initialize a git repo
+    // if the git option was provided, initialize a git repo
     if (args.createGit) {
+        // check if git is installed
         if (!commandExistsSync("git"))
             throw new CustomError("E004", "Git not installed");
 
