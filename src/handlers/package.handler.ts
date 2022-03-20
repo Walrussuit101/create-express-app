@@ -1,5 +1,6 @@
 import { exec } from "child_process";
 import chalk from "chalk";
+import path from "path";
 
 import { Spinner } from "../models";
 
@@ -56,8 +57,14 @@ const templateSpecDictionary = {
  * @returns JSON in shape of package.json file
  */
 export const buildPackageObj = (projectName: string, template: string) => {
+    // if projectName is '.' get the parent directory of the cwd
+    // otherwise, just use the projectName.
+    // if we don't do this the name field will be set to '.'
+    const correctedProjectName =
+        projectName === "." ? path.basename(process.cwd()) : projectName;
+
     const packageObj = {
-        name: projectName,
+        name: correctedProjectName,
         version: "1.0.0",
         main: "",
         scripts: {}
