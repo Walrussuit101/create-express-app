@@ -24,7 +24,7 @@ const ErrorDetailDictionary = {
         "\nPlease provide a valid template." +
         "\nUse '--help' to see valid templates.\n",
 
-    E004: "\nPlease install git to initialize a git repository & initial commit.\n"
+    E004: "\nPlease install git to initialize a git repository with an initial commit.\n"
 };
 
 export default CustomError;
