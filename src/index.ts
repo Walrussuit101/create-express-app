@@ -14,7 +14,7 @@ let PROJECT_DIR_INFO = {
     wasMade: false
 };
 
-const main = (args: arguments) => {
+const main = async (args: arguments) => {
     // get project directory
     const projectDir = directoryHandler.getProjectDirectory(args.projectName);
 
@@ -46,7 +46,7 @@ const main = (args: arguments) => {
         args.template
     );
     directoryHandler.copyPackageObj(projectDir, packageObj);
-    packageHandler.installDeps(projectDir, args.template);
+    await packageHandler.installDeps(projectDir, args.template);
 
     // If the git option was provided, initialize a git repo
     if (args.createGit) {
@@ -72,7 +72,7 @@ try {
             "--git",
             "Create a git repository & initial commit in your project"
         )
-        .action((projectName, template, options) => {
+        .action(async (projectName, template, options) => {
             // clean / build args obj
             const args = argumentsHandler.getArguments(
                 projectName,
@@ -81,7 +81,7 @@ try {
             );
 
             // start main process
-            main(args);
+            await main(args);
         });
 
     // accept input

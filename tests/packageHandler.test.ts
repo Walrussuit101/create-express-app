@@ -1,7 +1,7 @@
-import { packageHandler } from "../src/handlers";
-import { Logger } from "../src/models";
+import child_process, { ChildProcess } from "child_process";
 
-import child_process from "child_process";
+import { packageHandler } from "../src/handlers";
+import { Spinner } from "../src/models";
 
 describe("buildPackageObj()", () => {
     const testProjectName = "test-project";
@@ -65,9 +65,9 @@ describe("installDeps()", () => {
         jest.clearAllMocks();
     });
 
-    it("calls installDep() more than once with the project directory and a dependency", () => {
+    it("calls installDep() more than once with the project directory and a dependency", async () => {
         const testProjectDir = "./";
-        packageHandler.installDeps(testProjectDir, "static");
+        await packageHandler.installDeps(testProjectDir, "static");
 
         expect(installDepMock.mock.calls.length).toBeGreaterThan(1);
 
@@ -89,21 +89,20 @@ describe("installDeps()", () => {
 });
 
 describe("installDep()", () => {
-    let logInfoMock: jest.SpyInstance;
-    let execSyncMock: jest.SpyInstance;
+    let spinnerMock: jest.SpyInstance;
+    let execMock: jest.SpyInstance;
+    let execProc = new ChildProcess();
 
     const testProjectDir = "./";
     const testDependency = "test-package";
 
     // setup mock for tests
     beforeAll(() => {
-        // don't log anything during these tests
-        logInfoMock = jest.spyOn(Logger.prototype, "info").mockImplementation();
+        // don't actually start the spinner
+        spinnerMock = jest.spyOn(Spinner, "start").mockImplementation();
 
         // don't install any depdencies during these tests
-        execSyncMock = jest
-            .spyOn(child_process, "execSync")
-            .mockReturnValue("");
+        execMock = jest.spyOn(child_process, "exec").mockReturnValue(execProc);
     });
 
     // after the tests are done for this suite,
@@ -117,17 +116,22 @@ describe("installDep()", () => {
         jest.clearAllMocks();
     });
 
-    it("logs dependency using the logger", () => {
-        packageHandler.installDep(testProjectDir, testDependency);
+    it("starts a spinner when installing a dep", () => {
+        packageHandler.installDep(testProjectDir, testDependency).then(() => {
+            execProc.emit("close");
+        });
 
-        expect(logInfoMock).toHaveBeenCalled();
+        expect(spinnerMock).toHaveBeenCalled();
     });
 
-    it("calls execSync() with dependency and cwd option set", () => {
-        packageHandler.installDep(testProjectDir, testDependency);
+    it("calls exec() with dependency and cwd option set", () => {
+        packageHandler.installDep(testProjectDir, testDependency).then(() => {
+            // need to do this so the installDep() call doesn't hang
+            execProc.emit("close");
+        });
 
-        expect(execSyncMock).toHaveBeenCalledTimes(1);
-        expect(execSyncMock).toHaveBeenCalledWith(expect.any(String), {
+        expect(execMock).toHaveBeenCalledTimes(1);
+        expect(execMock).toHaveBeenCalledWith(expect.any(String), {
             cwd: testProjectDir
         });
     });
