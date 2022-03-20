@@ -28,11 +28,13 @@
     "homepage": "https://github.com/Walrussuit101/create-express-app#readme",
     "dependencies": {
         "chalk": "^4.1.2",
+        "command-exists": "^1.2.9",
         "commander": "^9.0.0",
         "fs-extra": "^10.0.0",
         "ora": "^5.4.1"
     },
     "devDependencies": {
+        "@types/command-exists": "^1.2.0",
         "@types/fs-extra": "^9.0.13",
         "@types/jest": "^27.4.0",
         "@types/node": "^17.0.21",

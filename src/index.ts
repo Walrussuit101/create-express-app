@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { program } from "commander";
+import { sync as commandExistsSync } from "command-exists";
 import packageFile from "../package.json";
 
 import { argumentsHandler, directoryHandler, packageHandler } from "./handlers";
@@ -48,8 +49,12 @@ const main = async (args: arguments) => {
     directoryHandler.copyPackageObj(projectDir, packageObj);
     await packageHandler.installDeps(projectDir, args.template);
 
-    // If the git option was provided, initialize a git repo
+    // if the git option was provided, initialize a git repo
     if (args.createGit) {
+        // check if git is installed
+        if (!commandExistsSync("git"))
+            throw new CustomError("E004", "Git not installed");
+
         directoryHandler.initGitRepo(projectDir);
         logger.info("Git repository initialized with initial commit.");
     }
