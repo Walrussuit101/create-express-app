@@ -1,4 +1,5 @@
 import child_process, { ChildProcess } from "child_process";
+import path from "path";
 
 import { packageHandler } from "../src/handlers";
 import { Spinner } from "../src/models";
@@ -12,19 +13,26 @@ describe("buildPackageObj()", () => {
         testProjectTemplate
     );
 
-    it("sets the name field to given project name", () => {
+    it("sets name field to given project name", () => {
         expect(packageObj.name).toStrictEqual(testProjectName);
     });
 
-    it("sets the version to 1.0.0", () => {
+    it("sets name field to the parent directory if given project name is '.'", () => {
+        const periodPackageObj = packageHandler.buildPackageObj(".", "static");
+        const expectedNameField = path.basename(process.cwd());
+
+        expect(periodPackageObj.name).toStrictEqual(expectedNameField);
+    });
+
+    it("sets version to 1.0.0", () => {
         expect(packageObj.version).toStrictEqual("1.0.0");
     });
 
-    it("defines the main field with a non-empty string", () => {
+    it("defines main field with a non-empty string", () => {
         expect(packageObj.main).not.toEqual("");
     });
 
-    it("defines the scripts field with a non-empty object", () => {
+    it("defines scripts field with a non-empty object", () => {
         let scriptKeys = Object.keys(packageObj.scripts);
         expect(scriptKeys.length).toBeGreaterThanOrEqual(1);
     });
