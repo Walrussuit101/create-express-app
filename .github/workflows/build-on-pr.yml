@@ -1,4 +1,4 @@
-name: test-on-pr
+name: build-on-pr
 
 on:
   pull_request:
@@ -15,5 +15,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Test PR code
-        run: npm test
+      - name: Build PR code
+        run: npm run build
