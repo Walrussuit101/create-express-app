@@ -9,9 +9,9 @@ class Logger {
 
     error(customError: CustomError) {
         console.error(
-            `[${chalk.red(customError.code)}] ${chalk.red(
-                customError.message
-            )}\n${chalk.red(customError.detail)}`
+            chalk.red(
+                `[${customError.code}] ${customError.message}\n ${customError.detail}`
+            )
         );
     }
 }

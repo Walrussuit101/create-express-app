@@ -60,43 +60,50 @@ const main = async (args: arguments) => {
     }
 };
 
-try {
-    // setup commander to accept args/options
-    program
-        .name(packageFile.name)
-        .version(packageFile.version)
-        .description(packageFile.description)
-        .addHelpText("after", helpString)
-        .usage("<project_name> <template> [options]")
-        .argument("<project_name>", "The name for your project")
-        .argument(
-            "<template>",
-            "The template to use for your project (see valid templates below)"
-        )
-        .option(
-            "--git",
-            "Create a git repository & initial commit in your project"
-        )
-        .action(async (projectName, template, options) => {
-            // clean / build args obj
-            const args = argumentsHandler.getArguments(
-                projectName,
-                template,
-                options
+// start the async main process,
+// this had to be abstracted away due to how commander handles async functions.
+const mainProcHandler = async (
+    projectName: string,
+    template: string,
+    options: { [option: string]: boolean }
+) => {
+    try {
+        // clean / build args obj
+        const args = argumentsHandler.getArguments(
+            projectName,
+            template,
+            options
+        );
+
+        // start main process
+        await main(args);
+    } catch (e: unknown) {
+        e instanceof CustomError ? logger.error(e) : console.error(e);
+
+        // if the project directory was made before the error clean it up
+        if (PROJECT_DIR_INFO.wasMade)
+            directoryHandler.deleteProjectDirectory(
+                PROJECT_DIR_INFO.projectDir
             );
 
-            // start main process
-            await main(args);
-        });
+        process.exit(1);
+    }
+};
 
-    // accept input
-    program.parse();
-} catch (e: unknown) {
-    e instanceof CustomError ? logger.error(e) : console.error(e);
+// setup commander to accept args/options
+program
+    .name(packageFile.name)
+    .version(packageFile.version)
+    .description(packageFile.description)
+    .addHelpText("after", helpString)
+    .usage("<project_name> <template> [options]")
+    .argument("<project_name>", "The name for your project")
+    .argument(
+        "<template>",
+        "The template to use for your project (see valid templates below)"
+    )
+    .option("--git", "Create a git repository & initial commit in your project")
+    .action(mainProcHandler);
 
-    // if the project directory was made before the error clean it up
-    if (PROJECT_DIR_INFO.wasMade)
-        directoryHandler.deleteProjectDirectory(PROJECT_DIR_INFO.projectDir);
-
-    process.exit(1);
-}
+// accept input
+program.parse();
