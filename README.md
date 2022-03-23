@@ -1,7 +1,7 @@
 # create-express-app
 
 ![build status](https://github.com/Walrussuit101/create-express-app/actions/workflows/build.yml/badge.svg)<br/><br/>
-Create express apps ranging from rest APIs to static web servers. :rocket:
+Create express apps ranging from rest APIs to static web servers :rocket:
 
 ## Quick Start
 
