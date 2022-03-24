@@ -1,5 +1,6 @@
 import { directoryHandler } from "../src/handlers";
 import fs from "fs-extra";
+import child from "child_process";
 import path from "path";
 
 import { CustomError } from "../src/models";
@@ -88,6 +89,7 @@ describe("copyTemplate()", () => {
     it("copies the given template to the given directory", () => {
         directoryHandler.copyTemplate(testProjectDir, testTemplate);
 
+        expect(copySyncMock).toHaveBeenCalledTimes(1);
         expect(copySyncMock.mock.calls[0][0]).toContain(testTemplate);
         expect(copySyncMock.mock.calls[0][1]).toStrictEqual(testProjectDir);
     });
@@ -95,10 +97,8 @@ describe("copyTemplate()", () => {
     it("adds . prefix to the gitignore file", () => {
         directoryHandler.copyTemplate(testProjectDir, testTemplate);
 
-        expect(renameSyncMock.mock.calls[0][0]).toStrictEqual(
-            path.join(testProjectDir, "gitignore")
-        );
-        expect(renameSyncMock.mock.calls[0][1]).toStrictEqual(
+        expect(renameSyncMock).toHaveBeenCalledWith(
+            path.join(testProjectDir, "gitignore"),
             path.join(testProjectDir, ".gitignore")
         );
     });
@@ -165,5 +165,43 @@ describe("copyPackageObj()", () => {
             testPackageObj,
             { spaces: 2 }
         );
+    });
+});
+
+describe("initGitRepo()", () => {
+    let execSyncMock: jest.SpyInstance;
+
+    // setup mocks
+    beforeAll(() => {
+        execSyncMock = jest.spyOn(child, "execSync").mockImplementation();
+    });
+
+    // restore mock implementations
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // clear mock usage data after each test
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("init repo, adds files, and commits with message", () => {
+        const testProjectDir = path.join(process.cwd(), "test-dir");
+
+        directoryHandler.initGitRepo(testProjectDir);
+
+        // check init, add, and commit
+        expect(execSyncMock).toHaveBeenCalledTimes(3);
+        expect(execSyncMock.mock.calls[0][0]).toContain("init");
+        expect(execSyncMock.mock.calls[1][0]).toContain("add .");
+        expect(execSyncMock.mock.calls[2][0]).toContain(
+            `commit -m "Initial Commit"`
+        );
+
+        // check each calls argument has the project directory
+        execSyncMock.mock.calls.forEach((call) => {
+            expect(call[0]).toContain(testProjectDir);
+        });
     });
 });
