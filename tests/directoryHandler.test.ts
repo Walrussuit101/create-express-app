@@ -61,3 +61,45 @@ describe("createProjectDirectory()", () => {
         }
     });
 });
+
+describe("copyTemplate()", () => {
+    let copySyncMock: jest.SpyInstance;
+    let renameSyncMock: jest.SpyInstance;
+
+    // setup mocks
+    beforeAll(() => {
+        copySyncMock = jest.spyOn(fs, "copySync").mockImplementation();
+        renameSyncMock = jest.spyOn(fs, "renameSync").mockImplementation();
+    });
+
+    // restore mock implementations
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // clear mock usage data after each test
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    const testProjectDir = path.join(process.cwd(), "test-dir");
+    const testTemplate = "static";
+
+    it("copies the given template to the given directory", () => {
+        directoryHandler.copyTemplate(testProjectDir, testTemplate);
+
+        expect(copySyncMock.mock.calls[0][0]).toContain(testTemplate);
+        expect(copySyncMock.mock.calls[0][1]).toStrictEqual(testProjectDir);
+    });
+
+    it("add . prefix to the gitignore file", () => {
+        directoryHandler.copyTemplate(testProjectDir, testTemplate);
+
+        expect(renameSyncMock.mock.calls[0][0]).toStrictEqual(
+            path.join(testProjectDir, "gitignore")
+        );
+        expect(renameSyncMock.mock.calls[0][1]).toStrictEqual(
+            path.join(testProjectDir, ".gitignore")
+        );
+    });
+});
