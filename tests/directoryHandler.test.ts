@@ -103,3 +103,30 @@ describe("copyTemplate()", () => {
         );
     });
 });
+
+describe("deleteProjectDirectory()", () => {
+    let removeSyncMock: jest.SpyInstance;
+
+    // setup mocks
+    beforeAll(() => {
+        removeSyncMock = jest.spyOn(fs, "removeSync").mockImplementation();
+    });
+
+    // restore mock implementations
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // clear mock usage data after each test
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("deletes given directory", () => {
+        const testDirectory = path.join(process.cwd(), "test-dir");
+
+        directoryHandler.deleteProjectDirectory(testDirectory);
+
+        expect(removeSyncMock).toHaveBeenCalledWith(testDirectory);
+    });
+});
