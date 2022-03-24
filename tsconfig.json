@@ -8,5 +8,11 @@
         "outDir": "./build",
         "rootDir": "./"
     },
-    "exclude": ["./templates/*", "./tests/*", "./build/*", "./src/build.ts"]
+    "exclude": [
+        "./templates/*",
+        "./tests/*",
+        "./build/*",
+        "./src/build.ts",
+        "./docs/*"
+    ]
 }
