@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 # `static`
 
-A web server that serves HTML, CSS, and a bundled JS file
+A web server that serves HTML, CSS, and a bundled JS file ([explore the code](https://github.com/Walrussuit101/create-express-app/tree/master/templates/static))
 
 ## Quick Start
 ```bash
