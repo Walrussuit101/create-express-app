@@ -92,7 +92,7 @@ describe("copyTemplate()", () => {
         expect(copySyncMock.mock.calls[0][1]).toStrictEqual(testProjectDir);
     });
 
-    it("add . prefix to the gitignore file", () => {
+    it("adds . prefix to the gitignore file", () => {
         directoryHandler.copyTemplate(testProjectDir, testTemplate);
 
         expect(renameSyncMock.mock.calls[0][0]).toStrictEqual(
