@@ -13,14 +13,6 @@ npx @walrussuit/create-express-app my-project static --git
 cd my-project
 npm start
 ```
-
-<br/>
-
-To use the current directory:
-```bash
-npx @walrussuit/create-express-app . static --git
-npm start
-```
 > Note: npx is available in npm version 5.2 and higher
 
 ## Other Example Usage
