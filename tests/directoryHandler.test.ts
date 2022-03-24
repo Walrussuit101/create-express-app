@@ -130,3 +130,40 @@ describe("deleteProjectDirectory()", () => {
         expect(removeSyncMock).toHaveBeenCalledWith(testDirectory);
     });
 });
+
+describe("copyPackageObj()", () => {
+    let outputJSONSyncMock: jest.SpyInstance;
+
+    // setup mocks
+    beforeAll(() => {
+        outputJSONSyncMock = jest
+            .spyOn(fs, "outputJSONSync")
+            .mockImplementation();
+    });
+
+    // restore mock implementations
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // clear mock usage data after each test
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("outputs JSON file to given directory with spaces set to 2", () => {
+        const testProjectDir = path.join(process.cwd(), "test-dir");
+        const testOutputDir = path.join(testProjectDir, "package.json");
+        const testPackageObj = {
+            test: 123
+        };
+
+        directoryHandler.copyPackageObj(testProjectDir, testPackageObj);
+
+        expect(outputJSONSyncMock).toHaveBeenCalledWith(
+            testOutputDir,
+            testPackageObj,
+            { spaces: 2 }
+        );
+    });
+});
