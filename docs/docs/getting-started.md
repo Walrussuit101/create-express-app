@@ -5,6 +5,8 @@ sidebar_label: "Getting Started"
 
 # Getting Started
 
+Create express apps ranging from rest APIs to static web servers 🚀
+
 ## Quick Start
 
 ```bash
