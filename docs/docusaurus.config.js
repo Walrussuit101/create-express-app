@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/cea-logo.svg',
   organizationName: 'Walrussuit101', // Usually your GitHub org/user name.
   projectName: 'create-express-app', // Usually your repo name.
 
@@ -44,10 +44,10 @@ const config = {
     ({
       navbar: {
         title: 'Create Express App',
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: 'My Site Logo',
+          src: 'img/cea-logo.svg',
+        },
         items: [
           {
             type: 'doc',
