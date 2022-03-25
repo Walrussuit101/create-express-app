@@ -5,6 +5,11 @@ sidebar_position: 2
 
 # Arguments
 
+Arguments should follow this format:
+```bash
+npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> [OPTIONS]
+```
+
 ## `<PROJECT_NAME>`
 Can be one of two values:
 1. A value only containing  `a-z`, `A-Z`, `0-9`, `-`, and `_` characters
