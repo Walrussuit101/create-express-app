@@ -24,11 +24,18 @@ const main = () => {
     // copy README and templates
     const readmePath = path.join(__dirname, "..", "README.md");
     const templatesPath = path.join(__dirname, "..", "templates");
+    const licensePath = path.join(__dirname, "..", "LICENSE");
+
     copySync(readmePath, path.join(buildDirPath, "README.md"));
+    logger.info("README copied to build");
+
     copySync(templatesPath, path.join(buildDirPath, "templates"), {
         recursive: true
     });
-    logger.info("README file and templates directory copied");
+    logger.info("templates directory copied to build");
+
+    copySync(licensePath, path.join(buildDirPath, "LICENSE"));
+    logger.info("LICENSE copied to build");
 };
 
 try {
