@@ -9,3 +9,6 @@ This will start the API on localhost at port 8080 (unless you provide a `PORT` e
 npm run dev
 ```
 This will re-start the API (using [nodemon](https://nodemon.io/)) on changes to any TypeScript or JSON file (hot-reloading)
+# API Routes
+The API routes are registered in the `./src/routes` directory.
+> You can also see all registered routes by going to root route of the server (http://localhost:8080)
