@@ -10,5 +10,5 @@ npm run dev
 ```
 This will re-start the API (using [nodemon](https://nodemon.io/)) on changes to any TypeScript or JSON file (hot-reloading)
 # API Routes
-To see all registered routes and their methods go to the root route of the server (http://localhost:8080)
+To see all registered routes and their methods go to the root route of the server in a browser (http://localhost:8080)
 >The API routes are registered in the `./src/routes` directory.
