@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "strict": true,
+        "lib": ["ESNext"],
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
+    }
+}
