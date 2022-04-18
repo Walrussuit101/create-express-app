@@ -9,7 +9,7 @@ const templateSpecDictionary = {
         main: "src/server.ts",
         scripts: {
             start: "npm run compile:client && ts-node src/server.ts",
-            dev: 'nodemon -e ts,json,html,css --exec "npm start"',
+            dev: "nodemon -e ts,json,html,css --exec npm start",
             "compile:client": "webpack --mode=production --no-stats",
             "compile:client:stats": "webpack --mode=production"
         },
@@ -28,7 +28,7 @@ const templateSpecDictionary = {
         main: "src/index.ts",
         scripts: {
             start: "ts-node src/index.ts",
-            dev: "nodemon -e ts,json --exec 'ts-node src/index.ts'"
+            dev: "nodemon -e ts,json --exec ts-node src/index.ts"
         },
         dependencies: [
             "@types/node",
@@ -51,7 +51,7 @@ const templateSpecDictionary = {
         main: "src/index.ts",
         scripts: {
             start: "ts-node src/index.ts",
-            dev: "nodemon -e ts,json --exec 'ts-node src/index.ts'"
+            dev: "nodemon -e ts,json --exec ts-node src/index.ts"
         },
         dependencies: [
             "@types/node",
