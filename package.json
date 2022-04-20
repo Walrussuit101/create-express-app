@@ -21,9 +21,7 @@
         "**/*": "prettier --write --ignore-unknown"
     },
     "jest": {
-        "transform": {
-            "^.+\\.ts?$": "ts-jest"
-        }
+        "preset": "ts-jest"
     },
     "repository": {
         "type": "git",
