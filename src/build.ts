@@ -15,6 +15,8 @@ const main = () => {
     delete packageObj.scripts;
     delete packageObj.devDependencies;
     delete packageObj["lint-staged"];
+    delete packageObj.prettier;
+    delete packageObj.jest;
     packageObj.main = "src/index.js";
     packageObj.bin = "src/index.js";
 
