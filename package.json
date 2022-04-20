@@ -12,8 +12,18 @@
         "build": "npm run test && npm run compile && ts-node src/build.ts",
         "prepare": "husky install"
     },
+    "prettier": {
+        "tabWidth": 4,
+        "endOfLine": "lf",
+        "trailingComma": "none"
+    },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.ts?$": "ts-jest"
+        }
     },
     "repository": {
         "type": "git",
