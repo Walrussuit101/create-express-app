@@ -9,7 +9,7 @@ const templateSpecDictionary = {
         main: "src/server.ts",
         scripts: {
             start: "npm run compile:client && ts-node src/server.ts",
-            dev: 'nodemon -e ts,json,html,css --exec "npm start"',
+            dev: "nodemon -e ts,json,html,css --exec npm start",
             "compile:client": "webpack --mode=production --no-stats",
             "compile:client:stats": "webpack --mode=production"
         },
@@ -28,7 +28,7 @@ const templateSpecDictionary = {
         main: "src/index.ts",
         scripts: {
             start: "ts-node src/index.ts",
-            dev: "nodemon -e ts,json --exec 'ts-node src/index.ts'"
+            dev: "nodemon -e ts,json --exec ts-node src/index.ts"
         },
         dependencies: [
             "@types/node",
@@ -45,6 +45,21 @@ const templateSpecDictionary = {
             "nodemon",
             "morgan",
             "express-list-endpoints"
+        ]
+    },
+    "hello-world": {
+        main: "src/index.ts",
+        scripts: {
+            start: "ts-node src/index.ts",
+            dev: "nodemon -e ts,json --exec ts-node src/index.ts"
+        },
+        dependencies: [
+            "@types/node",
+            "@types/express",
+            "typescript",
+            "ts-node",
+            "nodemon",
+            "express"
         ]
     }
 };
@@ -84,6 +99,12 @@ export const buildPackageObj = (projectName: string, template: string) => {
             packageObj.scripts = templateSpec.scripts;
             break;
         }
+
+        case "hello-world": {
+            const templateSpec = templateSpecDictionary[template];
+            packageObj.main = templateSpec.main;
+            packageObj.scripts = templateSpec.scripts;
+        }
     }
 
     return packageObj;
@@ -107,6 +128,11 @@ export const installDeps = async (
             }
             break;
         case "rest-api":
+            for (const dep of templateSpecDictionary[template].dependencies) {
+                await installDep(projectDir, dep);
+            }
+            break;
+        case "hello-world":
             for (const dep of templateSpecDictionary[template].dependencies) {
                 await installDep(projectDir, dep);
             }
