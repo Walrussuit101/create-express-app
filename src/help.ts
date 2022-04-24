@@ -23,6 +23,10 @@ Template descriptions:
     there is an example user controller, service, and route file. The user service operates on an in-memory array of users to serve in JSON.
     To add database functionality add queries / ORM calls in the service that returns data for the controller to respond with. The template
     also defaults to allow requests from localhost:3000 via CORS, this can be changed in the src/index.ts file.
+
+  hello-world:
+    This will create a single route web server that returns "Hello World" on the root route. This template is meant for quick starting an 
+    express app & its dependencies without any specific functionality in mind.
 `;
 
 export default helpString;
