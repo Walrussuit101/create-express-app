@@ -1,3 +1,5 @@
+import fs from "fs-extra";
+
 import { argumentsHandler } from "../src/handlers";
 import { CustomError } from "../src/models";
 
@@ -52,5 +54,60 @@ describe("getArguments()", () => {
             template: template,
             createGit: true
         });
+    });
+});
+
+describe("getValidTemplates", () => {
+    let readDirSyncMock: jest.SpyInstance;
+
+    // setup mock
+    beforeAll(() => {
+        readDirSyncMock = jest.spyOn(fs, "readdirSync").mockImplementation();
+    });
+
+    // restore mock implementations
+    afterAll(() => {
+        jest.restoreAllMocks();
+    });
+
+    // clear mock usage data after each test
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it("filters out non directory items", () => {
+        readDirSyncMock.mockReturnValue([
+            {
+                name: "is-file",
+                isDirectory: () => {
+                    return false;
+                }
+            },
+            {
+                name: "is-directory",
+                isDirectory: () => {
+                    return true;
+                }
+            }
+        ]);
+
+        const validTemplates = argumentsHandler.getValidTemplates();
+
+        expect(validTemplates.length).toStrictEqual(1);
+    });
+
+    it("only returns directory names", () => {
+        readDirSyncMock.mockReturnValue([
+            {
+                name: "is-directory",
+                isDirectory: () => {
+                    return true;
+                }
+            }
+        ]);
+
+        const validTemplates = argumentsHandler.getValidTemplates();
+
+        expect(validTemplates[0]).toStrictEqual("is-directory");
     });
 });
