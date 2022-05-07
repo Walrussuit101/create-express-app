@@ -1,4 +1,4 @@
-# create-express-app
+# create-express-app bruh
 
 ![build status](https://github.com/Walrussuit101/create-express-app/actions/workflows/build.yml/badge.svg)
 ![npm package](https://badge.fury.io/js/@walrussuit%2Fcea.svg)<br/><br/>
