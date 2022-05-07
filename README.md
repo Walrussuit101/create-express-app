@@ -1,12 +1,13 @@
 # create-express-app
 
-![build status](https://github.com/Walrussuit101/create-express-app/actions/workflows/build.yml/badge.svg)<br/><br/>
+![build status](https://github.com/Walrussuit101/create-express-app/actions/workflows/build.yml/badge.svg)
+![npm package](https://badge.fury.io/js/@walrussuit%2Fcea.svg)<br/><br/>
 Create express apps ranging from rest APIs to static web servers :rocket:
 
 ## Quick Start
 
 ```sh
-npx @walrussuit/create-express-app my-project rest-api --git
+npx @walrussuit/cea my-project rest-api --git
 cd my-project
 npm start
 ```
@@ -16,11 +17,11 @@ npm start
 The arguments are:<br/>
 
 ```sh
-npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> [OPTIONS]
+npx @walrussuit/cea <PROJECT_NAME> <TEMPLATE> [OPTIONS]
 ```
 
 For more info on the arguments and example usage:<br/>
 
 ```sh
-npx @walrussuit/create-express-app --help
+npx @walrussuit/cea --help
 ```

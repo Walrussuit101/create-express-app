@@ -1,5 +1,5 @@
 {
-    "name": "@walrussuit/create-express-app",
+    "name": "@walrussuit/cea",
     "version": "1.0.0",
     "description": "A tool to quickstart various express-y projects using templates",
     "main": "src/index.ts",
