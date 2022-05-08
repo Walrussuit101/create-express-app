@@ -9,7 +9,7 @@ const config = {
   title: 'Create Express App',
   tagline: 'create express apps ranging from rest APIs to static web servers 🚀',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/create-express-app/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/cea-logo.svg',
