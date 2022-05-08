@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://your-docusaurus-test-site.com/blog</id>
+    <title>Create Express App Blog</title>
+    <updated>2022-03-24T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
+    <subtitle>Create Express App Blog</subtitle>
+    <icon>https://your-docusaurus-test-site.com/img/cea-logo.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Test]]></title>
+        <id>test</id>
+        <link href="https://your-docusaurus-test-site.com/blog/test"/>
+        <updated>2022-03-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[hello world]]></summary>
+        <content type="html"><![CDATA[<p>hello world</p>]]></content>
+        <author>
+            <name>Tim Jefferson</name>
+            <uri>https://github.com/Walrussuit101</uri>
+        </author>
+    </entry>
+</feed>

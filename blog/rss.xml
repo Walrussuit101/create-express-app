@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Create Express App Blog</title>
+        <link>https://your-docusaurus-test-site.com/blog</link>
+        <description>Create Express App Blog</description>
+        <lastBuildDate>Thu, 24 Mar 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Test]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/test</link>
+            <guid>test</guid>
+            <pubDate>Thu, 24 Mar 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[hello world]]></description>
+            <content:encoded><![CDATA[<p>hello world</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>
