@@ -7,7 +7,7 @@ sidebar_position: 2
 
 Arguments should follow this format:
 ```bash
-npx @walrussuit/create-express-app <PROJECT_NAME> <TEMPLATE> [OPTIONS]
+npx @walrussuit/cea <PROJECT_NAME> <TEMPLATE> [OPTIONS]
 ```
 
 ## `<PROJECT_NAME>`
