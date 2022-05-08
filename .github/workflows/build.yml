@@ -16,3 +16,6 @@ jobs:
 
       - name: Build PR code
         run: npm run build
+
+      - name: Deploy docs
+        run: cd docs && npm run deploy
