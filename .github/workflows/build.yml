@@ -16,9 +16,3 @@ jobs:
 
       - name: Build PR code
         run: npm run build
-
-      - name: Deploy docs
-        run: cd docs && npm install && npm run deploy
-        env:
-          GIT_USER: Walrussuit101
-          GIT_PASS: ${{ secrets.GIT_TOKEN }}
