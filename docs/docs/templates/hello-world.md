@@ -8,7 +8,7 @@ A template to quick start an express server without any specific functionality i
 
 ## Quick Start
 ```bash
-npx @walrussuit/create-express-app my-project hello-world --git
+npx @walrussuit/cea my-project hello-world --git
 cd my-project
 npm start
 ```

@@ -8,7 +8,7 @@ A RESTful API with boilerplate routes to edit an in memory collection of users (
 
 ## Quick Start
 ```bash
-npx @walrussuit/create-express-app my-project rest-api --git
+npx @walrussuit/cea my-project rest-api --git
 cd my-project
 npm start
 ```

@@ -10,7 +10,7 @@ Create express apps ranging from rest APIs to static web servers 🚀
 ## Quick Start
 
 ```bash
-npx @walrussuit/create-express-app my-project static --git
+npx @walrussuit/cea my-project static --git
 cd my-project
 npm start
 ```
@@ -20,10 +20,10 @@ npm start
 
 To create the project in the current directory:
 ```bash
-npx @walrussuit/create-express-app . static --git
+npx @walrussuit/cea . static --git
 ```
 
 For help:
 ```bash
-npx @walrussuit/create-express-app --help
+npx @walrussuit/cea --help
 ```

@@ -8,7 +8,7 @@ A web server that serves HTML, CSS, and a bundled JS file ([explore the code](ht
 
 ## Quick Start
 ```bash
-npx @walrussuit/create-express-app my-project static --git
+npx @walrussuit/cea my-project static --git
 cd my-project
 npm start
 ```

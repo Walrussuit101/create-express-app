@@ -18,4 +18,4 @@ jobs:
         run: npm run build
 
       - name: Deploy docs
-        run: cd docs && npm run deploy
+        run: cd docs && npm install && npm run deploy
